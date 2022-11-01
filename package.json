@@ -1,0 +1,30 @@
+{
+  "name": "momey-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -wr styles/main.scss ./style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://yojessie@github.com/yojessie/momey-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yojessie/momey-manager/issues"
+  },
+  "homepage": "https://github.com/yojessie/momey-manager#readme",
+  "dependencies": {
+    "node-sass": "^7.0.3",
+    "stylelint-config-idiomatic-order": "^9.0.0",
+    "stylelint-config-recommended-scss": "^8.0.0",
+    "stylelint-order": "^5.0.0"
+  },
+  "devDependencies": {
+    "sass-lint": "^1.13.1"
+  }
+}
