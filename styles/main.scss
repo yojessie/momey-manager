@@ -1,8 +1,14 @@
+@import './base/icon-font';
+
 * {
   font-family: 'GmarketSans', sans-serif;
 }
 
 .page-title {
   font-family: 'Bungee', cursive;
+  font-size: 32px;
+}
+
+i {
   font-size: 32px;
 }
