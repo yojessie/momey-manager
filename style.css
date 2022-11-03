@@ -1,3 +1,8 @@
+body {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%; }
+
 @font-face {
   font-family: 'money';
   src: url("./assets/icon-font/money.eot");
@@ -323,16 +328,17 @@ template {
 /* Custom
    ========================================================================== */
 * {
-  margin: 0;
-  font-family: 'GmarketSans', sans-serif;
-  box-sizing: border-box; }
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "GmarketSans", sans-serif;
+  box-sizing: border-box;
+  margin: 0; }
 
 html {
-  font-family: 'GmarketSans', sans-serif; }
+  font-family: "GmarketSans", sans-serif; }
 
 body {
-  font-family: 'GmarketSans', sans-serif;
-  font-size: 14px; }
+  font-family: "GmarketSans", sans-serif; }
 
 h1 {
   margin: 0; }
@@ -358,19 +364,15 @@ a,
 button {
   cursor: pointer; }
 
+button {
+  padding: 0; }
+
 ul,
 ol {
   padding: 0;
   list-style: none; }
 
-* {
-  font-family: 'GmarketSans', sans-serif; }
-
-.page-title {
-  font-family: 'Bungee', cursive;
-  font-size: 32px; }
-
-i {
-  font-size: 32px; }
+address {
+  font-style: normal; }
 
 /*# sourceMappingURL=style.css.map */

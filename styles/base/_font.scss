@@ -1,0 +1,41 @@
+$font-gmarket: 'GmarketSans', sans-serif;
+$font-bungee: 'Bungee', cursive;
+
+$font-size-21: 21px;
+$font-size-14: 14px;
+$font-size-12: 12px;
+$font-size-10: 10px;
+
+$font-medium: 500;
+$font-bold: 700;
+
+$font-height-normal: 140%;
+$font-height-large: 120%;
+
+@mixin font-large {
+  font-size: $font-size-21;
+  font-weight: $font-bold;
+  line-height: $font-height-large;
+}
+
+@mixin font-regular {
+  font-size: $font-size-14;
+  font-weight: $font-medium;
+  line-height: $font-height-normal;
+}
+
+@mixin font-small {
+  font-size: $font-size-12;
+  font-weight: $font-medium;
+  line-height: $font-height-normal;
+}
+
+@mixin font-tiny {
+  font-size: $font-size-10;
+  font-weight: $font-medium;
+  line-height: $font-height-normal;
+}
+
+body {
+  @include font-regular();
+}

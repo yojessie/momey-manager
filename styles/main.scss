@@ -1,15 +1,4 @@
+@import './base/colors';
+@import './base/font';
 @import './base/icon-font';
 @import './base/normalize';
-
-* {
-  font-family: 'GmarketSans', sans-serif;
-}
-
-.page-title {
-  font-family: 'Bungee', cursive;
-  font-size: 32px;
-}
-
-i {
-  font-size: 32px;
-}

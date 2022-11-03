@@ -357,18 +357,19 @@ template {
    ========================================================================== */
 
 * {
-  margin: 0;
-  font-family: 'GmarketSans', sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-gmarket;
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
-  font-family: 'GmarketSans', sans-serif;
+  font-family: $font-gmarket;
 }
 
 body {
-  font-family: 'GmarketSans', sans-serif;
-  font-size: 14px;
+  font-family: $font-gmarket;
 }
 
 h1 {
@@ -398,8 +399,16 @@ button {
   cursor: pointer;
 }
 
+button {
+  padding: 0;
+}
+
 ul,
 ol {
   padding: 0;
   list-style: none;
+}
+
+address {
+  font-style: normal;
 }
