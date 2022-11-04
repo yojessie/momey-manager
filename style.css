@@ -1,7 +1,8 @@
 body {
   font-size: 14px;
   font-weight: 500;
-  line-height: 140%; }
+  line-height: 140%;
+  color: #3d434b; }
 
 @font-face {
   font-family: 'money';
@@ -374,5 +375,48 @@ ol {
 
 address {
   font-style: normal; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #e6e9ee; }
+
+.app {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 360px;
+  height: 860px;
+  text-align: center; }
+  .app .title {
+    margin-bottom: 40px;
+    font-family: "Bungee", cursive;
+    font-size: 32px;
+    color: rgba(61, 67, 75, 0.5); }
+  .app .window {
+    flex-grow: 1;
+    width: 100%;
+    height: auto;
+    padding: 0 24px 24px 24px;
+    margin-bottom: 40px;
+    background-color: #f8f8fc;
+    border-radius: 16px; }
+  .app .auther {
+    color: rgba(61, 67, 75, 0.5); }
+  @media screen and (max-width: 768px) {
+    .app {
+      width: 100vw;
+      height: 100vh; }
+      .app .title,
+      .app .auther {
+        display: none; }
+      .app .window {
+        margin-bottom: 0;
+        border-radius: 0; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,50 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: $pale-gray;
+}
+
+.app {
+  @include pos-center;
+  @include flex;
+  flex-direction: column;
+  width: 360px;
+  height: 860px;
+  text-align: center;
+
+  .title {
+    margin-bottom: 40px;
+    font-family: $font-bungee;
+    font-size: 32px;
+    color: $black50;
+  }
+
+  .window {
+    flex-grow: 1;
+    width: 100%;
+    height: auto;
+    padding: 0 24px 24px 24px;
+    margin-bottom: 40px;
+    background-color: $background;
+    border-radius: 16px;
+  }
+
+  .auther {
+    color: $black50;
+  }
+
+  @include mobile {
+    width: 100vw;
+    height: 100vh;
+
+    .title,
+    .auther {
+      display: none;
+    }
+
+    .window {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+  }
+}

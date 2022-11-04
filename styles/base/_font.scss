@@ -38,4 +38,5 @@ $font-height-large: 120%;
 
 body {
   @include font-regular();
+  color: $black;
 }
