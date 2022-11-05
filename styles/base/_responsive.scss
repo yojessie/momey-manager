@@ -1,7 +1,7 @@
 $break-point: 768px;
 
-@mixin mobile {
-  @media screen and (max-width: $break-point) {
+@mixin large-screen {
+  @media screen and (min-width: $break-point) {
     @content;
   }
 }

@@ -362,6 +362,7 @@ template {
   font-family: $font-gmarket;
   box-sizing: border-box;
   margin: 0;
+  color: $black;
 }
 
 html {
@@ -401,6 +402,10 @@ button {
 
 button {
   padding: 0;
+
+  i {
+    font-size: 24px;
+  }
 }
 
 ul,

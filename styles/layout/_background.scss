@@ -1,0 +1,49 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: $pale-gray;
+}
+
+.app {
+  @include pos-center;
+  @include flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+
+  &-title,
+  &-auther {
+    display: none;
+  }
+
+  .window {
+    width: 100%;
+    height: 100%;
+    padding: 0 24px 24px 24px;
+    background-color: $background;
+  }
+
+  @include large-screen {
+    width: 360px;
+    height: 860px;
+
+    &-title,
+    &-auther {
+      display: block;
+      color: $black50;
+    }
+
+    &-title {
+      margin-bottom: 40px;
+      font-family: $font-bungee;
+      font-size: 32px;
+    }
+
+    .window {
+      flex-grow: 1;
+      margin-bottom: 40px;
+      border-radius: 16px;
+    }
+  }
+}
