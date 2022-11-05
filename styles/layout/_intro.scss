@@ -8,8 +8,8 @@
   color: $white;
   background-color: $blue;
   border: 1px solid $black;
-  border-bottom: 8px solid $black;
-  border-radius: 12px 12px 16px 16px;
+  border-radius: 8px;
+  box-shadow: 0 8px $black;
 
   &-add {
     i {
