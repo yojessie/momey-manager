@@ -4,7 +4,7 @@ body {
   background-color: $pale-gray;
 }
 
-.app {
+.window {
   @include pos-center;
   @include flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ body {
     display: none;
   }
 
-  .window {
+  .app {
     @include flex;
     flex-direction: column;
     width: 100%;
@@ -42,7 +42,7 @@ body {
       font-size: 32px;
     }
 
-    .window {
+    .app {
       flex-grow: 1;
       margin-bottom: 40px;
       border-radius: 16px;

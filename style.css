@@ -385,7 +385,7 @@ body {
   height: 100vh;
   background-color: #e6e9ee; }
 
-.app {
+.window {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -397,9 +397,9 @@ body {
   width: 100vw;
   height: 100vh;
   text-align: center; }
-  .app-title, .app-auther {
+  .window-title, .window-auther {
     display: none; }
-  .app .window {
+  .window .app {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -409,17 +409,17 @@ body {
     padding: 0 24px 32px 24px;
     background-color: #f8f8fc; }
   @media screen and (min-width: 768px) {
-    .app {
+    .window {
       width: 360px;
       height: 860px; }
-      .app-title, .app-auther {
+      .window-title, .window-auther {
         display: block;
         color: rgba(61, 67, 75, 0.5); }
-      .app-title {
+      .window-title {
         margin-bottom: 40px;
         font-family: "Bungee", cursive;
         font-size: 32px; }
-      .app .window {
+      .window .app {
         flex-grow: 1;
         margin-bottom: 40px;
         border-radius: 16px; } }
