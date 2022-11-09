@@ -35,28 +35,69 @@
       <main class="app">
         <!-- GNB -->
         <header class="gnb">
-          <button class="gnb-title">
+          <button class="gnb-title" type="button" aria-label="메뉴 열기 버튼">
             <h2>9월의 소비</h2>
             <i class="icon-chevron-down"></i>
           </button>
-          <button class="gnb-setting">
+          <button class="gnb-setting" type="button" aria-label="환경설정 버튼">
             <i class="icon-settings"></i>
           </button>
         </header>
         <!-- INTRO -->
-        <section class="intro">
-          <button class="intro-add">
-            <i class="icon-plus-circle"></i>
-          </button>
-          <h3 class="intro-title">
-            이달의 예산을 설정하고<br />소비를 기록해 보세요!
-          </h3>
-          <p class="intro-subtxt">
-            소비 패턴을 파악하는 것은<br />체계적인 돈 관리의 시작입니다.
-          </p>
+        <section class="intro blue-box">
+          <div class="intro-guide">
+            <button
+              class="intro-add intro-first"
+              type="button"
+              aria-label="예산 설정하기 버튼"
+            >
+              <i class="icon-plus-circle"></i>
+            </button>
+            <h3 class="intro-title">
+              이달의 예산을 설정하고<br />소비를 기록해 보세요!
+            </h3>
+            <p class="intro-subtxt intro-first">
+              소비 패턴을 파악하는 것은<br />체계적인 돈 관리의 시작입니다.
+            </p>
+          </div>
+          <!-- INTRO-SETTING -->
+          <div class="intro-setting visually-hidden">
+            <div>
+              <h3 class="intro-title">
+                이달의 예산을 설정하고<br />소비를 기록해 보세요!
+              </h3>
+              <form action="/" method="post">
+                <select class="details select">
+                  <option value="" disabled selected>
+                    시작일을 선택하세요
+                  </option>
+                </select>
+
+                <input
+                  class="details input"
+                  type="text"
+                  placeholder="예산 금액을 입력하세요"
+                />
+
+                <p class="intro-subtxt">
+                  입력한 예산은 나중에 추가할 수 있어요
+                </p>
+              </form>
+            </div>
+            <button
+              class="intro-start button"
+              type="button"
+              aria-label="시작하기 버튼"
+            >
+              시작하기
+            </button>
+          </div>
         </section>
       </main>
       <a href="https://github.com/yojessie" class="window-auther">@yojessie</a>
     </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="./js/intro.js"></script>
   </body>
 </html>

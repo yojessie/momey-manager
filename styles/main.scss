@@ -1,11 +1,13 @@
 @import './base/positions';
 @import './base/responsive';
 @import './base/flex';
+@import './base/globals';
 
 @import './base/colors';
 @import './base/font';
 @import './base/icon-font';
 @import './base/normalize';
+@import './base/modules';
 
 @import './layout/background';
 @import './layout/gnb';
