@@ -4,7 +4,6 @@
   width: 100%;
   height: auto;
   padding: 40px 24px;
-  color: $white;
   background-color: $blue;
   border: 1px solid $black;
   border-radius: 8px;
@@ -19,6 +18,11 @@
   border: 1px solid $black;
   border-radius: 8px;
   box-shadow: 0 8px $black;
+  transition: background-color 300ms ease-in-out;
+
+  &:focus {
+    box-shadow: 0 8px $black;
+  }
 }
 
 .details {
@@ -38,5 +42,19 @@
 
   &.input::placeholder {
     color: $black30;
+  }
+}
+
+.money-input {
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  span {
+    @include font-regular;
+    position: absolute;
+    top: 11px;
+    right: 16px;
+    font-weight: $font-bold;
   }
 }

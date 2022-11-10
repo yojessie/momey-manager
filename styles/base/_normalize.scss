@@ -427,15 +427,6 @@ select {
   &::-ms-expand {
     display: none;
   }
-
-  // for option 1 used as the placeholder???????????
-  &:invalid {
-    color: $red;
-  }
-
-  option {
-    color: $black;
-  }
 }
 
 /* number input 오른쪽 화살표 제거 in Chrome, Safari, Edge, Opera */
