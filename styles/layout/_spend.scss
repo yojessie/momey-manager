@@ -1,0 +1,12 @@
+.spend {
+  @include flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  &-empty {
+    @include flex;
+    flex-grow: 1;
+    width: 100%;
+  }
+}

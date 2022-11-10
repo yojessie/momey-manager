@@ -45,52 +45,66 @@
         </header>
         <!-- INTRO -->
         <section class="intro blue-box">
-          <div class="intro-guide">
-            <button
-              class="intro-add intro-first"
-              type="button"
-              aria-label="예산 설정하기 버튼"
-            >
-              <i class="icon-plus-circle"></i>
-            </button>
-            <h3 class="intro-title">
-              이달의 예산을 설정하고<br />소비를 기록해 보세요!
-            </h3>
-            <p class="intro-subtxt intro-first">
-              소비 패턴을 파악하는 것은<br />체계적인 돈 관리의 시작입니다.
-            </p>
-          </div>
+          <button
+            class="intro-add intro-guide"
+            type="button"
+            aria-label="예산 설정하기 버튼"
+          >
+            <i class="icon-plus-circle"></i>
+          </button>
+          <h3 class="intro-title">
+            이달의 예산을 설정하고<br />소비를 기록해 보세요!
+          </h3>
+          <p class="intro-subtxt intro-guide">
+            소비 패턴을 파악하는 것은<br />체계적인 돈 관리의 시작입니다.
+          </p>
+
           <!-- INTRO-SETTING -->
           <div class="intro-setting visually-hidden">
-            <div>
-              <h3 class="intro-title">
-                이달의 예산을 설정하고<br />소비를 기록해 보세요!
-              </h3>
-              <form action="/" method="post">
-                <select class="details select">
-                  <option value="" disabled selected>
-                    시작일을 선택하세요
-                  </option>
-                </select>
+            <form class="intro-setting-form" action="/" method="post">
+              <select class="details select">
+                <option class="select-title" value="" disabled selected>
+                  시작일을 선택하세요
+                </option>
+              </select>
 
+              <div class="money-input">
                 <input
                   class="details input"
                   type="text"
                   placeholder="예산 금액을 입력하세요"
                 />
+                <span>원</span>
+              </div>
 
-                <p class="intro-subtxt">
-                  입력한 예산은 나중에 추가할 수 있어요
-                </p>
-              </form>
-            </div>
+              <p class="intro-subtxt">입력한 예산은 나중에 추가할 수 있어요</p>
+            </form>
+
             <button
-              class="intro-start button"
+              class="intro-start-button button"
               type="button"
               aria-label="시작하기 버튼"
             >
               시작하기
             </button>
+          </div>
+        </section>
+
+        <!-- SPEND-LIST -->
+        <section class="spend visually-hidden">
+          <div class="spend-summary blue-box">
+            <h3>0원</h3>
+            <div class="spend-bar">
+              <div class="spend-bar-active"></div>
+            </div>
+            <span class="spend-term">9월 5일 - 10월 4일</span>
+            <div class="spend-budget">
+              <span>이번달 예산 : 600,000원</span>
+              <button type="button">추가하기</button>
+            </div>
+          </div>
+          <div class="spend-empty">
+            <span>아직 기록된 소비 내역이 없어요</span>
           </div>
         </section>
       </main>
@@ -99,5 +113,6 @@
 
     <!-- JAVASCRIPT -->
     <script src="./js/intro.js"></script>
+    <script src="./js/spend.js"></script>
   </body>
 </html>
