@@ -15,7 +15,11 @@
     @include font-large;
     margin-bottom: 16px;
     color: $white;
-    transition: all 600ms ease-in-out;
+  }
+
+  &-alert-text {
+    margin-bottom: 4px;
+    color: $yellow;
   }
 
   &-subtxt {

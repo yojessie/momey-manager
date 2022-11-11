@@ -435,9 +435,12 @@ input[type='number'] {
   border: 1px solid #3d434b;
   border-radius: 8px;
   box-shadow: 0 8px #3d434b;
-  transition: background-color 300ms ease-in-out; }
+  transition: all 300ms ease-in-out; }
   .button:focus {
     box-shadow: 0 8px #3d434b; }
+  .button:disabled {
+    background-color: rgba(61, 67, 75, 0.5);
+    opacity: 0.3; }
 
 .details {
   width: 100%;
@@ -558,8 +561,10 @@ body {
     font-weight: 700;
     line-height: 120%;
     margin-bottom: 16px;
-    color: #fff;
-    transition: all 600ms ease-in-out; }
+    color: #fff; }
+  .intro-alert-text {
+    margin-bottom: 4px;
+    color: #ffce55; }
   .intro-subtxt {
     color: #fff; }
   .intro-start-button {
