@@ -51,18 +51,24 @@ function activeStartButton() {
 startDaySelect.addEventListener('change', activeStartButton)
 budgetInput.addEventListener('keyup', activeStartButton)
 
-// set budget data
-// value값을 로컬에 저장
-// 페이지 전환
+// set budget data and change pages
+const totalSpend = document.querySelector('.spend-summary-title')
+const spendTerm = document.querySelector('.spend-summary-term')
+const budget = document.querySelector('.spend-summary-budget span')
 
-function showSpend() {
+function setBudgetData() {
+  localStorage.setItem('startDay', startDaySelect.value)
+  localStorage.setItem('budget', budgetInput.value)
+
+  const savedStartDay = localStorage.getItem('startDay')
+  const savedBudget = localStorage.getItem('budget')
+
+  totalSpend.innerText = `0원`
+  spendTerm.innerText = `9월 ${savedStartDay}일 - 10월 ${savedStartDay - 1}일`
+  budget.innerText = `이번달 예산 : ${savedBudget}원`
+
   introPage.classList.toggle('visually-hidden')
   spendPage.classList.toggle('visually-hidden')
-
-  console.log(startDaySelect.value)
-  console.log(budgetInput.value)
 }
 
-startButton.addEventListener('click', showSpend)
-
-// set user-data in local
+startButton.addEventListener('click', setBudgetData)
