@@ -60,15 +60,30 @@ function setBudgetData() {
   localStorage.setItem('startDay', startDaySelect.value)
   localStorage.setItem('budget', budgetInput.value)
 
-  const savedStartDay = localStorage.getItem('startDay')
-  const savedBudget = localStorage.getItem('budget')
+  generateSpendSummary()
+}
+
+function generateSpendSummary() {
+  let savedStartDay = localStorage.getItem('startDay')
+  let savedEndDay = savedStartDay - 1
+  let savedBudget = localStorage.getItem('budget')
+
+  if (savedStartDay == 1) {
+    savedEndDay = new Date(nowYear, nowMonth, 0).getDate()
+    nextMonth = nowMonth
+  }
 
   totalSpend.innerText = `0원`
-  spendTerm.innerText = `9월 ${savedStartDay}일 - 10월 ${savedStartDay - 1}일`
+  spendTerm.innerText = `${nowMonth}월 ${savedStartDay}일 - ${nextMonth}월 ${savedEndDay}일`
   budget.innerText = `이번달 예산 : ${savedBudget}원`
 
   introPage.classList.toggle('visually-hidden')
   spendPage.classList.toggle('visually-hidden')
 }
 
-startButton.addEventListener('click', setBudgetData)
+// switch screens
+if (localStorage.getItem('budget') == null) {
+  startButton.addEventListener('click', setBudgetData)
+} else {
+  generateSpendSummary()
+}
