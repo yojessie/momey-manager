@@ -51,7 +51,7 @@ function activeStartButton() {
 startDaySelect.addEventListener('change', activeStartButton)
 budgetInput.addEventListener('keyup', activeStartButton)
 
-// set budget data and change pages
+// set budget data and switch screens
 const totalSpend = document.querySelector('.spend-summary-title')
 const spendTerm = document.querySelector('.spend-summary-term')
 const budget = document.querySelector('.spend-summary-budget span')
