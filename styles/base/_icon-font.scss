@@ -2,11 +2,12 @@
 
 @font-face {
   font-family: 'money';
-  src: url('fonts/money.eot?o2dz4q');
-  src: url('fonts/money.eot?o2dz4q#iefix') format('embedded-opentype'),
-    url('fonts/money.ttf?o2dz4q') format('truetype'),
-    url('fonts/money.woff?o2dz4q') format('woff'),
-    url('fonts/money.svg?o2dz4q#money') format('svg');
+  src: url('./assets/icon-font/money.eot?o2dz4q');
+  src: url('./assets/icon-font/money.eot?o2dz4q#iefix')
+      format('embedded-opentype'),
+    url('./assets/icon-font/money.ttf?o2dz4q') format('truetype'),
+    url('./assets/icon-font/money.woff?o2dz4q') format('woff'),
+    url('./assets/icon-font/money.svg?o2dz4q#money') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -15,7 +16,6 @@
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'money' !important;
-  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
