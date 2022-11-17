@@ -1,5 +1,6 @@
 .gnb {
   @include flex(center, space-between);
+  flex-shrink: 0;
   width: 100%;
   height: 72px;
   padding: 0 0 0 8px;

@@ -19,8 +19,8 @@ body {
 
 @font-face {
   font-family: 'money';
-  src: url("./assets/icon-font/money.eot");
-  src: url("./assets/icon-font/money.eot#iefix") format("embedded-opentype"), url("./assets/icon-font/money.ttf") format("truetype"), url("./assets/icon-font/money.woff") format("woff"), url("./assets/icon-font/money.svg#money") format("svg");
+  src: url("./assets/icon-font/money.eot?o2dz4q");
+  src: url("./assets/icon-font/money.eot?o2dz4q#iefix") format("embedded-opentype"), url("./assets/icon-font/money.ttf?o2dz4q") format("truetype"), url("./assets/icon-font/money.woff?o2dz4q") format("woff"), url("./assets/icon-font/money.svg?o2dz4q#money") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block; }
@@ -43,17 +43,84 @@ i {
 .icon-chevron-down:before {
   content: '\e901'; }
 
-.icon-edit:before {
+.icon-chevron-left:before {
   content: '\e902'; }
 
-.icon-plus-circle:before {
+.icon-chevron-right:before {
   content: '\e903'; }
 
-.icon-settings:before {
+.icon-close:before {
   content: '\e904'; }
 
-.icon-star:before {
+.icon-edit:before {
   content: '\e905'; }
+
+.icon-moon .path1:before {
+  content: '\e906';
+  color: #ffce55; }
+
+.icon-moon .path2:before {
+  content: '\e907';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-plus-circle:before {
+  content: '\e908'; }
+
+.icon-settings:before {
+  content: '\e909'; }
+
+.icon-star:before {
+  content: '\e90a'; }
+
+.icon-sun .path1:before {
+  content: '\e90b';
+  color: #ed5564; }
+
+.icon-sun .path2:before {
+  content: '\e90c';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path3:before {
+  content: '\e90d';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path4:before {
+  content: '\e90e';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path5:before {
+  content: '\e90f';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path6:before {
+  content: '\e910';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path7:before {
+  content: '\e911';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path8:before {
+  content: '\e912';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path9:before {
+  content: '\e913';
+  margin-left: -1em;
+  color: #3d434b; }
+
+.icon-sun .path10:before {
+  content: '\e914';
+  margin-left: -1em;
+  color: #3d434b; }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -412,7 +479,7 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield; }
 
-.blue-box {
+.border-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -493,6 +560,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     flex-direction: column;
     width: 100%;
     height: 100%;
@@ -518,6 +586,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
   width: 100%;
   height: 72px;
   padding: 0 0 0 8px; }
@@ -657,5 +726,57 @@ body {
       color: #fff; }
     .spend-add:hover {
       background-color: #8cc051; }
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 24px 24px 32px 24px;
+  background-color: #f8f8fc; }
+  .modal-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 40px 24px;
+    background-color: #fff;
+    border-radius: 8px; }
+    .modal-add-content h3 {
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 120%;
+      margin-bottom: 32px; }
+    .modal-add-content .input-group .calendar-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 8px; }
+    .modal-add-content .input-group textarea {
+      height: 80px;
+      padding: 16px; }
+    .modal-add-content .input-group .star-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%; }
+      .modal-add-content .input-group .star-button i {
+        margin-right: 4px;
+        color: #e6e9ee; }
+      .modal-add-content .input-group .star-button span {
+        margin-top: 4px; }
+    .modal-add-save {
+      background-color: #a0d468; }
+    .modal-add-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      width: 40px;
+      height: 40px; }
 
 /*# sourceMappingURL=style.css.map */

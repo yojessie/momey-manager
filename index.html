@@ -44,7 +44,7 @@
           </button>
         </header>
         <!-- INTRO -->
-        <section class="intro blue-box">
+        <section class="intro border-box">
           <button
             class="intro-add intro-guide"
             type="button"
@@ -94,7 +94,7 @@
 
         <!-- SPEND-LIST -->
         <section class="spend visually-hidden">
-          <div class="spend-summary blue-box">
+          <div class="spend-summary border-box">
             <h3 class="spend-summary-title">소비기록합계</h3>
             <div class="spend-summary-bar">
               <div class="spend-summary-bar-active"></div>
@@ -112,6 +112,51 @@
             <i class="icon-edit"></i>
           </button>
         </section>
+
+        <!-- MODAL TO ADD SPEND LIST -->
+        <aside class="modal">
+          <div class="modal-add border-box">
+            <div class="modal-add-content">
+              <h3>타이틀</h3>
+              <div class="input-group">
+                <div class="calendar-button details">
+                  <span>0000년 0월 0일 금요일</span>
+                  <button type="button">
+                    <i class="icon-calendar"></i>
+                  </button>
+                </div>
+                <div class="money-input">
+                  <input
+                    class="details input"
+                    type="text"
+                    placeholder="소비 금액"
+                  />
+                  <span>원</span>
+                </div>
+                <select class="spend-catagories details select">
+                  <option value="" disabled selected>카테고리</option>
+                </select>
+                <input class="details input" type="text" placeholder="내용" />
+                <textarea
+                  class="details input"
+                  cols="30"
+                  rows="10"
+                  placeholder="기타 메모"
+                ></textarea>
+                <button class="star-button" type="button">
+                  <i class="icon-star"></i>
+                  <span>예상 못한 소비는 따로 체크해두세요!</span>
+                </button>
+              </div>
+            </div>
+            <button class="modal-add-save button" type="submit">
+              저장하기
+            </button>
+            <button class="modal-add-close">
+              <i class="icon-close"></i>
+            </button>
+          </div>
+        </aside>
       </main>
       <a href="https://github.com/yojessie" class="window-auther">@yojessie</a>
     </div>
@@ -121,5 +166,6 @@
     <script src="./js/gnb.js"></script>
     <script src="./js/intro.js"></script>
     <script src="./js/spend.js"></script>
+    <script src="./js/addModal.js"></script>
   </body>
 </html>
