@@ -4,8 +4,18 @@ const modalTitle = document.querySelector('.modal-add-content h3')
 modalTitle.innerText = '소비 내역'
 
 // date input
-const spendDate = document.querySelector('.calendar-button span')
+// const spendDate = document.querySelector('.calendar-button span')
 spendDate.innerText = `${nowYear}년 ${nowMonth}월 ${nowDate}일 ${nowDay}`
+
+// calendar modal
+const calendarIcon = document.querySelector('.calendar-button button')
+
+function openCalendarModal() {
+  overlay.classList.toggle('visually-hidden')
+  calendarModal.classList.toggle('visually-hidden')
+}
+
+calendarIcon.addEventListener('click', openCalendarModal)
 
 // catagories
 const catagorySelect = document.querySelector('.spend-catagories')
@@ -41,3 +51,12 @@ function changeColor() {
 }
 
 catagorySelect.addEventListener('change', changeColor)
+
+// star icon (unexpected spend)
+const starIcon = document.querySelector('.star-button i')
+
+function checkStar() {
+  starIcon.classList.toggle('star-button-red')
+}
+
+starIcon.addEventListener('click', checkStar)

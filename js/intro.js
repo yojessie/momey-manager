@@ -34,11 +34,15 @@ function changeColor() {
 startDaySelect.addEventListener('change', changeColor)
 
 // activate the start button
+const introBudgetInput = document.querySelector(
+  '.intro-setting .money-input input'
+)
+
 function activeStartButton() {
-  if (startDaySelect.value !== '' && budgetInput.value !== '') {
+  if (startDaySelect.value !== '' && introBudgetInput.value !== '') {
     const alertText = document.querySelector('.intro-alert-text')
 
-    if (budgetInput.value < 1000) {
+    if (introBudgetInput.value < 1000) {
       alertText.classList.remove('visually-hidden')
       alertText.innerText = '1,000원 이상의 예산을 설정해주세요'
       startButton.setAttribute('disabled', '')
@@ -49,7 +53,7 @@ function activeStartButton() {
   }
 }
 startDaySelect.addEventListener('change', activeStartButton)
-budgetInput.addEventListener('keyup', activeStartButton)
+introBudgetInput.addEventListener('keyup', activeStartButton)
 
 // set budget data and switch screens
 const totalSpend = document.querySelector('.spend-summary-title')
@@ -58,7 +62,7 @@ const budget = document.querySelector('.spend-summary-budget span')
 
 function setBudgetData() {
   localStorage.setItem('startDay', startDaySelect.value)
-  localStorage.setItem('budget', budgetInput.value)
+  localStorage.setItem('budget', introBudgetInput.value)
 
   generateSpendSummary()
 }

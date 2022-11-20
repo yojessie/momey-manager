@@ -108,13 +108,13 @@
           <div class="spend-empty">
             <span>아직 기록된 소비 내역이 없어요</span>
           </div>
-          <button class="spend-add">
+          <button class="spend-add-button">
             <i class="icon-edit"></i>
           </button>
         </section>
 
         <!-- MODAL TO ADD SPEND LIST -->
-        <aside class="modal">
+        <aside class="modal visually-hidden">
           <div class="modal-add border-box">
             <div class="modal-add-content">
               <h3>타이틀</h3>
@@ -159,13 +159,13 @@
         </aside>
 
         <!-- CALENDAR MODAL -->
-        <aside class="calendar">
+        <aside class="calendar visually-hidden">
           <div class="calendar-title">
-            <button class="last-month">
+            <button class="prev-button">
               <i class="icon-chevron-left"></i>
             </button>
             <h3>월</h3>
-            <button class="next-month">
+            <button class="next-button">
               <i class="icon-chevron-right"></i>
             </button>
           </div>
@@ -187,17 +187,17 @@
         </aside>
 
         <!-- OVERLAY -->
-        <div class="overlay"></div>
+        <div class="overlay visually-hidden"></div>
       </main>
       <a href="https://github.com/yojessie" class="window-auther">@yojessie</a>
     </div>
 
     <!-- JAVASCRIPT -->
     <script src="./js/globals.js"></script>
+    <script src="./js/calendar.js"></script>
     <script src="./js/gnb.js"></script>
     <script src="./js/intro.js"></script>
     <script src="./js/spend.js"></script>
     <script src="./js/addModal.js"></script>
-    <script src="./js/calendar.js"></script>
   </body>
 </html>

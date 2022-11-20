@@ -720,7 +720,7 @@ body {
     width: 100%; }
     .spend-empty span {
       color: rgba(61, 67, 75, 0.5); }
-  .spend-add {
+  .spend-add-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -733,9 +733,9 @@ body {
     border: 2px solid #3d434b;
     border-radius: 50%;
     transition: background-color 300ms ease-in-out; }
-    .spend-add i {
+    .spend-add-button i {
       color: #fff; }
-    .spend-add:hover {
+    .spend-add-button:hover {
       background-color: #8cc051; }
 
 .modal {
@@ -777,6 +777,8 @@ body {
       .modal-add-content .input-group .star-button i {
         margin-right: 4px;
         color: #e6e9ee; }
+      .modal-add-content .input-group .star-button .star-button-red {
+        color: #ed5564; }
       .modal-add-content .input-group .star-button span {
         margin-top: 4px; }
     .modal-add-save {
@@ -797,7 +799,7 @@ body {
   left: 0;
   z-index: 300;
   width: 100%;
-  height: 480px;
+  height: auto;
   padding: 40px 24px;
   background-color: #fff;
   border-radius: 16px; }
@@ -830,8 +832,18 @@ body {
           color: #ed5564; }
         .calendar-content .grid div.sat {
           color: #5d9cec; }
+        .calendar-content .grid div.today {
+          font-weight: 700;
+          color: #8cc051; }
+        .calendar-content .grid div.selected {
+          font-weight: 700;
+          color: #fff;
+          background-color: #a0d468;
+          border-radius: 22px; }
       .calendar-content .grid.date {
-        grid-template-rows: repeat(5, 44px); }
+        grid-template-rows: repeat(6, 44px); }
+        .calendar-content .grid.date div {
+          cursor: pointer; }
   .calendar-done-button {
     background-color: #a0d468; }
 
