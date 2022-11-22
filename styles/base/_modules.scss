@@ -27,6 +27,10 @@
   &:disabled {
     background-color: $black50;
     opacity: 0.3;
+
+    &:hover {
+      background-color: $black50;
+    }
   }
 }
 

@@ -56,7 +56,49 @@ catagorySelect.addEventListener('change', changeColor)
 const starIcon = document.querySelector('.star-button i')
 
 function checkStar() {
-  starIcon.classList.toggle('star-button-red')
+  starIcon.classList.toggle('red')
 }
 
 starIcon.addEventListener('click', checkStar)
+
+// save spend data
+let spends = []
+const addSaveButton = document.querySelector('.modal-add-save-button')
+
+function saveSpend() {
+  localStorage.setItem('spendList', JSON.stringify(spends))
+}
+
+function submitSpendList() {
+  const expense = document.querySelector('.spend-expense')
+  const catagory = document.querySelector('.spend-catagories')
+  const title = document.querySelector('.spend-title')
+  const memo = document.querySelector('.spend-memo')
+  const star = document.querySelector('.icon-star')
+
+  const spendList = {
+    id: Date.now(),
+    expense: expense.value,
+    catagory: catagory.value,
+    title: title.value,
+    memo: memo.value,
+    star: star.classList.contains('red'),
+  }
+
+  spends.push(spendList)
+  saveSpend()
+
+  expense.value = ''
+  catagory.value = ''
+  title.value = ''
+  memo.value = ''
+  star.classList.remove('red')
+}
+
+function handleSaveButton(e) {
+  e.preventDefault()
+  submitSpendList()
+  handleModal()
+}
+
+addSaveButton.addEventListener('click', handleSaveButton)

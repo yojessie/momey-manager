@@ -42,7 +42,7 @@
             color: $pale-gray;
           }
 
-          .star-button-red {
+          .red {
             color: $red;
           }
 
@@ -53,8 +53,12 @@
       }
     }
 
-    &-save {
+    &-save-button {
       background-color: $green;
+
+      &:hover {
+        background-color: $green-dark;
+      }
     }
 
     &-close {
