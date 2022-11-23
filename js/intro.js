@@ -15,11 +15,11 @@ for (let i = 1; i <= 30; i++) {
 }
 
 // change color of select
-function changeColor() {
+function handleSelectColor() {
   startDaySelect.style.color = '#3d434b'
 }
 
-startDaySelect.addEventListener('change', changeColor)
+startDaySelect.addEventListener('change', handleSelectColor)
 
 // activate the start button
 const introBudgetInput = document.querySelector(

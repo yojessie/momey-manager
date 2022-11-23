@@ -554,6 +554,7 @@ body {
   width: 100vw;
   height: 100vh;
   padding: 0 24px;
+  overflow: hidden;
   background-color: #f8f8fc; }
 
 @media screen and (min-width: 768px) {
@@ -832,6 +833,10 @@ body {
       align-items: center;
       justify-content: space-between;
       padding-right: 8px; }
+      .modal-add-content .input-group .calendar-button button {
+        transition: opacity 300ms ease-in-out; }
+        .modal-add-content .input-group .calendar-button button:hover {
+          opacity: 0.6; }
     .modal-add-content .input-group textarea {
       height: 80px;
       padding: 16px; }
@@ -842,9 +847,14 @@ body {
       width: 100%; }
       .modal-add-content .input-group .star-button i {
         margin-right: 4px;
-        color: #e6e9ee; }
+        color: #e6e9ee;
+        transition: color 200ms ease-in-out; }
+        .modal-add-content .input-group .star-button i:hover {
+          color: rgba(61, 67, 75, 0.3); }
       .modal-add-content .input-group .star-button .red {
         color: #ed5564; }
+        .modal-add-content .input-group .star-button .red:hover {
+          color: #db4453; }
       .modal-add-content .input-group .star-button span {
         margin-top: 4px; }
     .modal-add-save-button {
@@ -860,6 +870,8 @@ body {
       right: 32px;
       width: 40px;
       height: 40px; }
+      .modal-add-close:hover {
+        opacity: 0.6; }
 
 .calendar {
   position: absolute;
@@ -886,6 +898,8 @@ body {
       justify-content: center;
       width: 40px;
       height: 40px; }
+      .calendar-title button:hover {
+        opacity: 0.6; }
   .calendar-content {
     margin-bottom: 24px; }
     .calendar-content .grid {
@@ -914,5 +928,7 @@ body {
           cursor: pointer; }
   .calendar-done-button {
     background-color: #a0d468; }
+    .calendar-done-button:hover {
+      background-color: #8cc051; }
 
 /*# sourceMappingURL=style.css.map */

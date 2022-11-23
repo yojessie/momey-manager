@@ -26,6 +26,14 @@
         .calendar-button {
           @include flex(center, space-between);
           padding-right: 8px;
+
+          button {
+            transition: opacity 300ms ease-in-out;
+
+            &:hover {
+              opacity: 0.6;
+            }
+          }
         }
 
         textarea {
@@ -40,10 +48,19 @@
           i {
             margin-right: 4px;
             color: $pale-gray;
+            transition: color 200ms ease-in-out;
+
+            &:hover {
+              color: $black30;
+            }
           }
 
           .red {
             color: $red;
+
+            &:hover {
+              color: $red-dark;
+            }
           }
 
           span {
@@ -68,6 +85,10 @@
       right: 32px;
       width: 40px;
       height: 40px;
+
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
 }

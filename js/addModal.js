@@ -42,11 +42,11 @@ for (let i of spendCatagories) {
 }
 
 // change color of select
-function changeColor() {
+function handleSelectColor() {
   catagorySelect.style.color = '#3d434b'
 }
 
-catagorySelect.addEventListener('change', changeColor)
+catagorySelect.addEventListener('change', handleSelectColor)
 
 // star icon (unexpected spend)
 function checkStar() {
@@ -83,6 +83,7 @@ function submitSpendList() {
 
   expense.value = ''
   catagory.value = ''
+  catagorySelect.style.color = 'rgba(61, 67, 75, 0.3)'
   title.value = ''
   memo.value = ''
   star.classList.remove('red')
