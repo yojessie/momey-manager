@@ -1,15 +1,3 @@
-const introAddButon = document.querySelector('.intro-add')
-const introGuide = document.querySelectorAll('.intro-guide')
-const introSettding = document.querySelector('.intro-setting')
-
-const startDaySelect = document.querySelector('.intro-setting .select')
-// declared at globals.js
-// const budgetInput = document.querySelector('.money-input input')
-
-const startButton = document.querySelector('.intro-start-button')
-const introPage = document.querySelector('.intro')
-const spendPage = document.querySelector('.spend')
-
 // show intro-setting
 function showIntroSetting() {
   introGuide.forEach((i) => i.classList.toggle('visually-hidden'))
@@ -56,10 +44,6 @@ startDaySelect.addEventListener('change', activeStartButton)
 introBudgetInput.addEventListener('keyup', activeStartButton)
 
 // set budget data and switch screens
-const totalSpend = document.querySelector('.spend-summary-title')
-const spendTerm = document.querySelector('.spend-summary-term')
-const budget = document.querySelector('.spend-summary-budget span')
-
 function setBudgetData() {
   localStorage.setItem('startDay', startDaySelect.value)
   localStorage.setItem('budget', introBudgetInput.value)

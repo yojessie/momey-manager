@@ -1,6 +1,4 @@
 // title(spend)
-const modalTitle = document.querySelector('.modal-add-content h3')
-
 modalTitle.innerText = '소비 내역'
 
 // date input
@@ -8,8 +6,6 @@ modalTitle.innerText = '소비 내역'
 spendDate.innerText = `${nowYear}년 ${nowMonth}월 ${nowDate}일 ${nowDay}`
 
 // calendar modal
-const calendarIcon = document.querySelector('.calendar-button button')
-
 function openCalendarModal() {
   overlay.classList.toggle('visually-hidden')
   calendarModal.classList.toggle('visually-hidden')
@@ -53,8 +49,6 @@ function changeColor() {
 catagorySelect.addEventListener('change', changeColor)
 
 // star icon (unexpected spend)
-const starIcon = document.querySelector('.star-button i')
-
 function checkStar() {
   starIcon.classList.toggle('red')
 }
@@ -63,7 +57,6 @@ starIcon.addEventListener('click', checkStar)
 
 // save spend data
 let spends = []
-const addSaveButton = document.querySelector('.modal-add-save-button')
 
 function saveSpend() {
   localStorage.setItem('spendList', JSON.stringify(spends))

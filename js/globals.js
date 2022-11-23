@@ -1,6 +1,4 @@
 // change to currency in bedget input
-const budgetInputs = document.querySelectorAll('.money-input input')
-
 function toCurrency(e) {
   let value = e.target.value
 
@@ -14,6 +12,3 @@ function toCurrency(e) {
 }
 
 budgetInputs.forEach((i) => i.addEventListener('keyup', toCurrency))
-
-// overlay
-const overlay = document.querySelector('.overlay')
