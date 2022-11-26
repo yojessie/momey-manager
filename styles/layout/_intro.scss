@@ -16,15 +16,17 @@
   &-title {
     @include font-large;
     margin-bottom: 16px;
+    line-height: $line-height-130;
     color: $white;
   }
 
   &-alert-text {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     color: $yellow;
   }
 
   &-subtxt {
+    line-height: $line-height-130;
     color: $white;
   }
 

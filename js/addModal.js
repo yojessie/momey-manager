@@ -56,21 +56,22 @@ function checkStar() {
 starIcon.addEventListener('click', checkStar)
 
 // save spend data
-let spends = []
-
 function saveSpend() {
   localStorage.setItem('spendList', JSON.stringify(spends))
 }
 
 function submitSpendList() {
+  const date = document.querySelector('.input-group .calendar-button span')
   const expense = document.querySelector('.spend-expense')
   const catagory = document.querySelector('.spend-catagories')
   const title = document.querySelector('.spend-title')
   const memo = document.querySelector('.spend-memo')
-  const star = document.querySelector('.icon-star')
+  const star = document.querySelector('.star-button i')
 
   const spendList = {
     id: Date.now(),
+    date: date.innerText,
+    dateId: `${selectedYear}-${selectedMonth}-${selectedDate}`,
     expense: expense.value,
     catagory: catagory.value,
     title: title.value,
@@ -87,6 +88,8 @@ function submitSpendList() {
   title.value = ''
   memo.value = ''
   star.classList.remove('red')
+
+  generateSpendList(spendList)
 }
 
 function handleSaveButton(e) {

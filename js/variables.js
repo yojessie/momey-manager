@@ -18,7 +18,11 @@ const totalSpend = document.querySelector('.spend-summary-title')
 const spendTerm = document.querySelector('.spend-summary-term')
 const budget = document.querySelector('.spend-summary-budget span')
 const addButton = document.querySelector('.spend .spend-add-button')
+
+const spendEmpty = document.querySelector('.spend-empty')
+const spendListDiv = document.querySelector('.spend-list')
 // SPEND-add-modal
+let spends = []
 const addModal = document.querySelector('.modal')
 const modalCloseButton = document.querySelector('.modal-add .modal-add-close')
 
