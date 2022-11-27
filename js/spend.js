@@ -1,5 +1,6 @@
 // open and close add modal
 function handleModal() {
+  generateCalendar(date)
   addModal.classList.toggle('visually-hidden')
 }
 

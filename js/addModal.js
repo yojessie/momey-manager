@@ -82,6 +82,7 @@ function submitSpendList() {
   spends.push(spendList)
   saveSpend()
 
+  spendDate.innerText = `${nowYear}년 ${nowMonth}월 ${nowDate}일 ${nowDay}`
   expense.value = ''
   catagory.value = ''
   catagorySelect.style.color = 'rgba(61, 67, 75, 0.3)'

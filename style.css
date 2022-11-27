@@ -743,7 +743,7 @@ body {
       padding: 24px 0;
       border-bottom: 1px dashed rgba(61, 67, 75, 0.5); }
       .spend-list-day:last-child {
-        margin-bottom: 16px;
+        margin-bottom: 64px;
         border-bottom: 0; }
     .spend-list-title {
       margin-bottom: 16px;
