@@ -130,6 +130,7 @@
           .catagory {
             @include flex;
             @include font-small;
+            flex-shrink: 0;
             width: 66px;
             height: 22px;
             margin-right: 8px;
@@ -152,11 +153,17 @@
               color: $red;
             }
           }
+
+          .expense {
+            width: 84px;
+            text-align: right;
+          }
         }
 
         .memo {
           @include font-small;
           padding-left: 74px;
+          line-height: $line-height-130;
           color: $black50;
           text-align: left;
         }

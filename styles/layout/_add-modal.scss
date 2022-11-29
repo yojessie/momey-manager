@@ -36,6 +36,18 @@
           }
         }
 
+        .spend-title-wrap {
+          position: relative;
+
+          .title-maxlength {
+            position: absolute;
+            top: 13px;
+            right: 16px;
+            display: none;
+            color: $red;
+          }
+        }
+
         textarea {
           height: 80px;
           padding: 16px;

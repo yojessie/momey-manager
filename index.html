@@ -132,20 +132,23 @@
                   <input
                     class="spend-expense details input"
                     type="text"
-                    placeholder="소비 금액"
+                    placeholder="소비 금액 (필수)"
                     required
                   />
                   <span>원</span>
                 </div>
                 <select class="spend-catagories details select" required>
-                  <option value="" disabled selected>카테고리</option>
+                  <option value="" disabled selected>카테고리 (필수)</option>
                 </select>
-                <input
-                  class="spend-title details input"
-                  type="text"
-                  placeholder="내용"
-                  required
-                />
+                <div class="spend-title-wrap">
+                  <input
+                    class="spend-title details input"
+                    type="text"
+                    placeholder="내용 (필수)"
+                    required
+                  />
+                  <span class="title-maxlength">최대10자</span>
+                </div>
                 <textarea
                   class="spend-memo details input"
                   cols="30"
@@ -158,7 +161,7 @@
                 </button>
               </div>
             </form>
-            <button class="modal-add-save-button button" type="submit">
+            <button class="modal-add-save-button button" type="submit" disabled>
               저장하기
             </button>
             <button class="modal-add-close">

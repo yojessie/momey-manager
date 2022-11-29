@@ -56,13 +56,10 @@
 
 .money-input {
   position: relative;
-  width: 100%;
-  height: auto;
 
   span {
-    @include font-regular;
     position: absolute;
-    top: 11px;
+    top: 13px;
     right: 16px;
     font-weight: $font-bold;
   }

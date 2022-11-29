@@ -100,3 +100,49 @@ function handleSaveButton(e) {
 }
 
 addSaveButton.addEventListener('click', handleSaveButton)
+
+// activate save button
+const spendExpense = document.querySelector('.spend-expense')
+const spendCatagory = document.querySelector('.spend-catagories')
+const spendTitle = document.querySelector('.spend-title')
+
+function activeSaveButton() {
+  if (
+    spendExpense.value !== '' &&
+    spendCatagory !== '' &&
+    spendTitle.value !== ''
+  ) {
+    addSaveButton.removeAttribute('disabled')
+  } else {
+    addSaveButton.setAttribute('disabled', '')
+  }
+}
+
+spendExpense.addEventListener('keyup', activeSaveButton)
+spendCatagory.addEventListener('change', activeSaveButton)
+spendTitle.addEventListener('keyup', activeSaveButton)
+
+// limit the number of characters
+function limitSpendTitleByte() {
+  const titleValue = spendTitle.value
+  const maxByte = 20
+  let totalByte = 0
+  let count = 0
+
+  const warningTxt = document.querySelector(
+    '.spend-title-wrap .title-maxlength'
+  )
+
+  for (let i = 0; i < titleValue.length; i++) {
+    totalByte += titleValue.charCodeAt(i) > 128 ? 2 : 1
+    count++
+
+    if (totalByte > maxByte) {
+      spendTitle.value = spendTitle.value.substr(0, count - 1)
+      spendTitle.style.border = '1px solid #ed5564'
+      warningTxt.style.display = 'block'
+    }
+  }
+}
+
+spendTitle.addEventListener('keyup', limitSpendTitleByte)
