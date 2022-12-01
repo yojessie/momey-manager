@@ -6,7 +6,7 @@ function toCurrency(e) {
     value = ''
   }
 
-  value = Number(value.replaceAll(',', ''))
+  value = parseInt(value.replaceAll(',', ''))
   let formatValue = value.toLocaleString('ko-KR')
   e.target.value = formatValue
 }

@@ -7,8 +7,32 @@ function handleModal() {
 addButton.addEventListener('click', handleModal)
 modalCloseButton.addEventListener('click', handleModal)
 
+// calculate total spend
+function calTotalSpend(expenseValue) {
+  const expenseNum = parseInt(expenseValue.replaceAll(',', ''))
+  totalSpendMoney += expenseNum
+  totalSpend.innerText = `${totalSpendMoney.toLocaleString('ko-KR')}원`
+
+  const spendBar = document.querySelector('.spend-summary-bar-active')
+  const savedBudget = parseInt(
+    localStorage.getItem('budget').replaceAll(',', '')
+  )
+  const percentWidth = (totalSpendMoney / savedBudget) * 100
+  spendBar.style.width = `${percentWidth}%`
+
+  if (percentWidth > 80) {
+    spendBar.classList.add('bar-red')
+  } else if (percentWidth > 50) {
+    spendBar.classList.add('bar-yellow')
+  } else {
+    spendBar.classList.add('bar-green')
+  }
+}
+
 // generate spend list
 function generateSpendList(spendList) {
+  calTotalSpend(spendList.expense)
+
   const contentList = document.createElement('li')
   contentList.className = 'spend-list-item'
   contentList.id = spendList.id

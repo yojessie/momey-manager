@@ -73,6 +73,7 @@
                   class="details input"
                   type="text"
                   placeholder="예산을 입력하세요"
+                  maxlength="10"
                 />
                 <span>원</span>
               </div>
@@ -134,21 +135,19 @@
                     type="text"
                     placeholder="소비 금액 (필수)"
                     required
+                    maxlength="9"
                   />
                   <span>원</span>
                 </div>
                 <select class="spend-catagories details select" required>
                   <option value="" disabled selected>카테고리 (필수)</option>
                 </select>
-                <div class="spend-title-wrap">
-                  <input
-                    class="spend-title details input"
-                    type="text"
-                    placeholder="내용 (필수)"
-                    required
-                  />
-                  <span class="title-maxlength">최대10자</span>
-                </div>
+                <input
+                  class="spend-title details input"
+                  type="text"
+                  placeholder="내용 (필수)"
+                  required
+                />
                 <textarea
                   class="spend-memo details input"
                   cols="30"

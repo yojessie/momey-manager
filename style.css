@@ -680,20 +680,32 @@ body {
     .spend-summary-bar {
       position: relative;
       width: 100%;
-      height: 12px;
+      height: 10px;
       margin-bottom: 16px;
+      overflow: hidden;
       background-color: #fff;
       border: 1px solid #3d434b;
-      border-radius: 4px; }
+      border-radius: 4px;
+      box-sizing: content-box; }
       .spend-summary-bar-active {
         position: absolute;
         top: -1px;
         left: -1px;
         width: 12px;
-        height: 12px;
+        height: 100%;
+        max-width: 100%;
+        min-width: 12px;
         background-color: #a0d468;
         border: 1px solid #3d434b;
-        border-radius: 4px; }
+        border-radius: 4px;
+        box-sizing: content-box;
+        transition: all 1s ease-in-out; }
+      .spend-summary-bar .bar-green {
+        background-color: #a0d468; }
+      .spend-summary-bar .bar-yellow {
+        background-color: #ffce55; }
+      .spend-summary-bar .bar-red {
+        background-color: #ed5564; }
     .spend-summary-term {
       margin-bottom: 8px;
       color: #fff; }
@@ -784,6 +796,10 @@ body {
             flex-grow: 1;
             text-align: left; }
             .spend-list-item button .content .title span {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              max-width: 136px;
               margin-right: 4px; }
             .spend-list-item button .content .title i {
               font-size: 14px;
@@ -849,14 +865,6 @@ body {
         transition: opacity 300ms ease-in-out; }
         .modal-add-content .input-group .calendar-button button:hover {
           opacity: 0.6; }
-    .modal-add-content .input-group .spend-title-wrap {
-      position: relative; }
-      .modal-add-content .input-group .spend-title-wrap .title-maxlength {
-        position: absolute;
-        top: 13px;
-        right: 16px;
-        display: none;
-        color: #ed5564; }
     .modal-add-content .input-group textarea {
       height: 80px;
       padding: 16px; }

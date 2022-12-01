@@ -15,6 +15,7 @@ const startButton = document.querySelector('.intro-start-button')
 const spendPage = document.querySelector('.spend')
 // SPEND-summary
 const totalSpend = document.querySelector('.spend-summary-title')
+let totalSpendMoney = 0
 const spendTerm = document.querySelector('.spend-summary-term')
 const budget = document.querySelector('.spend-summary-budget span')
 const addButton = document.querySelector('.spend .spend-add-button')

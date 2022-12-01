@@ -2,7 +2,6 @@
 modalTitle.innerText = '소비 내역'
 
 // date input
-// const spendDate = document.querySelector('.calendar-button span')
 spendDate.innerText = `${nowYear}년 ${nowMonth}월 ${nowDate}일 ${nowDay}`
 
 // calendar modal
@@ -55,6 +54,49 @@ function checkStar() {
 
 starIcon.addEventListener('click', checkStar)
 
+// activate save button
+const spendExpense = document.querySelector('.spend-expense')
+const spendCatagory = document.querySelector('.spend-catagories')
+const spendTitle = document.querySelector('.spend-title')
+
+function activeSaveButton() {
+  if (
+    spendExpense.value !== '' &&
+    spendCatagory.value !== '' &&
+    spendTitle.value !== ''
+  ) {
+    addSaveButton.removeAttribute('disabled')
+  } else {
+    addSaveButton.setAttribute('disabled', '')
+  }
+}
+
+spendExpense.addEventListener('keyup', activeSaveButton)
+spendCatagory.addEventListener('change', activeSaveButton)
+spendTitle.addEventListener('keyup', activeSaveButton)
+
+// limit the number of characters
+function limitSpendTitleByte() {
+  spendTitle.removeAttribute('readonly')
+
+  const titleValue = spendTitle.value
+  const maxByte = 20
+  let totalByte = 0
+  let count = 0
+
+  for (let i = 0; i < titleValue.length; i++) {
+    totalByte += titleValue.charCodeAt(i) > 128 ? 2 : 1
+    count++
+
+    if (totalByte > maxByte) {
+      spendTitle.value = titleValue.slice(0, count - 1)
+      spendTitle.setAttribute('readonly', '')
+    }
+  }
+}
+
+spendTitle.addEventListener('keyup', limitSpendTitleByte)
+
 // save spend data
 function saveSpend() {
   localStorage.setItem('spendList', JSON.stringify(spends))
@@ -89,6 +131,7 @@ function submitSpendList() {
   title.value = ''
   memo.value = ''
   star.classList.remove('red')
+  addSaveButton.setAttribute('disabled', '')
 
   generateSpendList(spendList)
 }
@@ -100,49 +143,3 @@ function handleSaveButton(e) {
 }
 
 addSaveButton.addEventListener('click', handleSaveButton)
-
-// activate save button
-const spendExpense = document.querySelector('.spend-expense')
-const spendCatagory = document.querySelector('.spend-catagories')
-const spendTitle = document.querySelector('.spend-title')
-
-function activeSaveButton() {
-  if (
-    spendExpense.value !== '' &&
-    spendCatagory !== '' &&
-    spendTitle.value !== ''
-  ) {
-    addSaveButton.removeAttribute('disabled')
-  } else {
-    addSaveButton.setAttribute('disabled', '')
-  }
-}
-
-spendExpense.addEventListener('keyup', activeSaveButton)
-spendCatagory.addEventListener('change', activeSaveButton)
-spendTitle.addEventListener('keyup', activeSaveButton)
-
-// limit the number of characters
-function limitSpendTitleByte() {
-  const titleValue = spendTitle.value
-  const maxByte = 20
-  let totalByte = 0
-  let count = 0
-
-  const warningTxt = document.querySelector(
-    '.spend-title-wrap .title-maxlength'
-  )
-
-  for (let i = 0; i < titleValue.length; i++) {
-    totalByte += titleValue.charCodeAt(i) > 128 ? 2 : 1
-    count++
-
-    if (totalByte > maxByte) {
-      spendTitle.value = spendTitle.value.substr(0, count - 1)
-      spendTitle.style.border = '1px solid #ed5564'
-      warningTxt.style.display = 'block'
-    }
-  }
-}
-
-spendTitle.addEventListener('keyup', limitSpendTitleByte)
