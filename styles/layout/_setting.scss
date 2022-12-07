@@ -1,0 +1,32 @@
+.setting {
+  @include flex(center, space-between);
+  flex-grow: 1;
+  padding: 40px 24px;
+  margin-bottom: 32px;
+
+  &-input-group {
+    width: 100%;
+
+    .title {
+      @include font-large;
+      margin-bottom: 16px;
+      line-height: $line-height-130;
+      color: $white;
+    }
+
+    .alert {
+      margin-bottom: 8px;
+      color: $yellow;
+    }
+
+    .subtxt {
+      line-height: $line-height-130;
+      color: $white;
+    }
+  }
+
+  &-start-button {
+    bottom: 32px;
+    width: 100%;
+  }
+}

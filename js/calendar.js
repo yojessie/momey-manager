@@ -1,46 +1,16 @@
-// global variables
-const date = new Date()
-const nowYear = date.getFullYear()
-
-const nowMonth = date.getMonth() + 1
-let nextMonth = nowMonth + 1
-if (nowMonth == 12) nextMonth = 1
-
-const nowDate = date.getDate()
-
-const weekDay = [
-  '일요일',
-  '월요일',
-  '화요일',
-  '수요일',
-  '목요일',
-  '금요일',
-  '토요일',
-]
-const nowDay = weekDay[date.getDay()]
-
-const calendarContent = document.querySelector('.calendar-content .date')
-const calendarTitle = document.querySelector('.calendar-title h3')
-
-let selectedYear = nowYear
-let selectedMonth = nowMonth
-let selectedDate = nowDate
-
 // calendar modal
+// 캘린더 모달을 생성하는 함수
 function generateCalendar(date) {
   selectedYear = date.getFullYear()
   selectedMonth = date.getMonth() + 1
   selectedDate = date.getDate()
 
-  // title
   calendarTitle.innerText = `${selectedYear}년 ${selectedMonth}월`
 
-  // content
   const firstDay = new Date(selectedYear, selectedMonth - 1, 1).getDay()
   const lastDay = new Date(selectedYear, selectedMonth, 0).getDate()
 
   let dateTemplate = ''
-
   for (let i = 0; i < firstDay; i++) {
     dateTemplate += `<div></div>`
   }
@@ -56,27 +26,22 @@ function generateCalendar(date) {
       dateTemplate += `<div>${i}</div>`
     }
   }
-
   calendarContent.innerHTML = dateTemplate
 }
 
-generateCalendar(date)
-
 // prev and next month
-const prevButton = document.querySelector('.calendar-title .prev-button')
-const nextButton = document.querySelector('.calendar-title .next-button')
-
+// 캘린더 생성 함수에 월 정보를 + - 해서 넘겨주어 다른달 표시
 function toPrevMonth() {
-  generateCalendar(new Date(date.setMonth(date.getMonth() - 1)))
+  generateCalendar(new Date(nowFullDate.setMonth(nowFullDate.getMonth() - 1)))
 }
 function toNextMonth() {
-  generateCalendar(new Date(date.setMonth(date.getMonth() + 1)))
+  generateCalendar(new Date(nowFullDate.setMonth(nowFullDate.getMonth() + 1)))
 }
-
-prevButton.addEventListener('click', toPrevMonth)
-nextButton.addEventListener('click', toNextMonth)
+calendarPrevButton.addEventListener('click', toPrevMonth)
+calendarNextButton.addEventListener('click', toNextMonth)
 
 // select date
+// 원하는 날짜 선택 시 작동 함수
 function selectDate(e) {
   const calendarContentDiv = document.querySelectorAll(
     '.calendar-content .date div'
@@ -89,10 +54,7 @@ function selectDate(e) {
 calendarContent.addEventListener('click', selectDate)
 
 // done button
-const calendarModal = document.querySelector('.calendar')
-const doneButton = document.querySelector('.calendar-done-button')
-const spendDate = document.querySelector('.calendar-button span')
-
+// 선택한 날짜 반영 및 캘린더 닫기
 function closeCalendar() {
   let selectedDay =
     weekDay[new Date(selectedYear, selectedMonth - 1, selectedDate).getDay()]
@@ -102,4 +64,4 @@ function closeCalendar() {
   overlay.classList.toggle('visually-hidden')
 }
 
-doneButton.addEventListener('click', closeCalendar)
+calendarDoneButton.addEventListener('click', closeCalendar)

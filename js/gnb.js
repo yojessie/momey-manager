@@ -1,1 +1,1 @@
-gnbTitle.innerText = `${nowMonth}월의 소비`
+gnbTitle.innerText = '이달의 소비'

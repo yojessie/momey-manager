@@ -43,65 +43,72 @@
             <i class="icon-settings"></i>
           </button>
         </header>
+
         <!-- INTRO -->
         <section class="intro border-box">
           <button
-            class="intro-add intro-guide"
+            class="intro-plus-button"
             type="button"
             aria-label="예산 설정하기 버튼"
           >
             <i class="icon-plus-circle"></i>
           </button>
           <h3 class="intro-title">
-            이달의 예산을 설정하고<br />소비를 기록해 보세요!
+            월간 예산을 설정하고<br />소비를 기록해 보세요!
           </h3>
           <p class="intro-subtxt intro-guide">
             소비 패턴을 파악하는 것은<br />체계적인 돈 관리의 시작입니다.
           </p>
-
-          <!-- INTRO-SETTING -->
-          <div class="intro-setting visually-hidden">
-            <form class="intro-setting-form" action="/" method="post">
-              <select class="details select">
-                <option class="select-title" value="" disabled selected>
-                  시작일을 선택하세요
-                </option>
-              </select>
-
-              <div class="money-input">
-                <input
-                  class="details input"
-                  type="text"
-                  placeholder="예산을 입력하세요"
-                  maxlength="10"
-                />
-                <span>원</span>
-              </div>
-
-              <p class="intro-alert-text"></p>
-              <p class="intro-subtxt">입력한 금액은 나중에 수정할 수 있어요</p>
-            </form>
-
-            <button
-              class="intro-start-button button"
-              type="button"
-              aria-label="시작하기 버튼"
-              disabled
-            >
-              시작하기
-            </button>
-          </div>
         </section>
 
-        <!-- SPEND-LIST -->
+        <!-- SETTING -->
+        <form
+          class="setting border-box visually-hidden"
+          action="/"
+          method="post"
+        >
+          <div class="setting-input-group">
+            <h3 class="title">
+              월간 예산을 설정하고<br />소비를 기록해 보세요!
+            </h3>
+            <select class="details select" name="select">
+              <option class="select-title" value="" disabled selected>
+                시작일을 선택하세요
+              </option>
+            </select>
+            <div class="money-input">
+              <input
+                class="details input"
+                type="text"
+                placeholder="예산을 입력하세요"
+                maxlength="10"
+                name="budget"
+              />
+              <span>원</span>
+            </div>
+            <p class="alert visually-hidden"></p>
+            <p class="subtxt">입력한 금액은 나중에 수정할 수 있어요</p>
+          </div>
+
+          <button
+            class="setting-start-button button button-yellow"
+            type="submit"
+            aria-label="시작하기 버튼"
+            disabled
+          >
+            시작하기
+          </button>
+        </form>
+
+        <!-- SPEND -->
         <section class="spend visually-hidden">
           <div class="spend-summary border-box">
-            <h3 class="spend-summary-title">소비기록합계</h3>
-            <div class="spend-summary-bar">
-              <div class="spend-summary-bar-active"></div>
+            <h3 class="title">소비기록합계</h3>
+            <div class="bar">
+              <div class="bar-active"></div>
             </div>
-            <span class="spend-summary-term">설정한기간</span>
-            <div class="spend-summary-budget">
+            <span class="term">설정한기간</span>
+            <div class="budget">
               <span>설정한에산</span>
               <button type="button">추가하기</button>
             </div>
@@ -112,61 +119,69 @@
 
           <div class="spend-list"></div>
 
-          <button class="spend-add-button">
+          <button class="spend-add-button button-green">
             <i class="icon-edit"></i>
           </button>
         </section>
 
-        <!-- MODAL TO ADD SPEND LIST -->
-        <aside class="modal visually-hidden">
-          <div class="modal-add border-box">
-            <form class="modal-add-content">
+        <!-- SPEND MODAL-->
+        <aside class="spend-modal visually-hidden">
+          <form class="spend-modal-content border-box">
+            <div class="input-group">
               <h3>타이틀</h3>
-              <div class="input-group">
-                <div class="calendar-button details">
-                  <span>0000년 0월 0일 금요일</span>
-                  <button type="button">
-                    <i class="icon-calendar"></i>
-                  </button>
-                </div>
-                <div class="money-input">
-                  <input
-                    class="spend-expense details input"
-                    type="text"
-                    placeholder="소비 금액 (필수)"
-                    required
-                    maxlength="9"
-                  />
-                  <span>원</span>
-                </div>
-                <select class="spend-catagories details select" required>
-                  <option value="" disabled selected>카테고리 (필수)</option>
-                </select>
-                <input
-                  class="spend-title details input"
-                  type="text"
-                  placeholder="내용 (필수)"
-                  required
-                />
-                <textarea
-                  class="spend-memo details input"
-                  cols="30"
-                  rows="10"
-                  placeholder="기타 메모"
-                ></textarea>
-                <button class="star-button" type="button">
-                  <i class="icon-star"></i>
-                  <span>예상 못한 소비는 따로 체크해두세요!</span>
+              <div class="spend-date details">
+                <span>0000년 0월 0일 금요일</span>
+                <button type="button">
+                  <i class="icon-calendar"></i>
                 </button>
               </div>
-            </form>
-            <button class="modal-add-save-button button" type="submit" disabled>
+              <div class="money-input">
+                <input
+                  class="spend-expense details input"
+                  type="text"
+                  placeholder="소비 금액 (필수)"
+                  required
+                  maxlength="9"
+                />
+                <span>원</span>
+              </div>
+              <select class="spend-catagory details select" required>
+                <option value="" disabled selected>카테고리 (필수)</option>
+              </select>
+              <input
+                class="spend-title details input"
+                type="text"
+                placeholder="내용 (필수)"
+                required
+              />
+              <textarea
+                class="spend-memo details input"
+                cols="30"
+                rows="10"
+                placeholder="기타 메모"
+              ></textarea>
+              <div class="spend-star">
+                <i class="icon-star"></i>
+                <span>예상 못한 소비는 따로 체크해두세요!</span>
+              </div>
+              <button
+                class="spend-list-delete-button visually-hidden"
+                type="button"
+              >
+                내역 삭제하기
+              </button>
+            </div>
+            <button
+              class="spend-modal-save-button button button-green"
+              type="submit"
+              disabled
+            >
               저장하기
             </button>
-            <button class="modal-add-close">
+            <button class="spend-modal-close-button" type="button">
               <i class="icon-close"></i>
             </button>
-          </div>
+          </form>
         </aside>
 
         <!-- CALENDAR MODAL -->
@@ -192,7 +207,10 @@
             </div>
             <div class="grid date"></div>
           </div>
-          <button class="calendar-done-button button" type="button">
+          <button
+            class="calendar-done-button button button-green"
+            type="button"
+          >
             선택완료
           </button>
         </aside>
@@ -209,7 +227,9 @@
     <script src="./js/calendar.js"></script>
     <script src="./js/gnb.js"></script>
     <script src="./js/intro.js"></script>
+    <script src="./js/setting.js"></script>
     <script src="./js/spend.js"></script>
-    <script src="./js/addModal.js"></script>
+    <script src="./js/spendModal.js"></script>
+    <script src="./js/deleteList.js"></script>
   </body>
 </html>

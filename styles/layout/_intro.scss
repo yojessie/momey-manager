@@ -2,9 +2,8 @@
   flex-grow: 1;
   padding: 40px 24px;
   margin-bottom: 32px;
-  overflow: hidden;
 
-  &-add {
+  &-plus-button {
     i {
       font-size: 48px;
       color: $white;
@@ -20,33 +19,8 @@
     color: $white;
   }
 
-  &-alert-text {
-    margin-bottom: 8px;
-    color: $yellow;
-  }
-
   &-subtxt {
     line-height: $line-height-130;
     color: $white;
-  }
-
-  &-start-button {
-    background-color: $yellow;
-
-    &:hover {
-      background-color: $yellow-dark;
-    }
-  }
-
-  &-setting {
-    @include flex(center, space-between);
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    transition: all 600ms ease-in-out;
-
-    &-form {
-      width: 100%;
-    }
   }
 }

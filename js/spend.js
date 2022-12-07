@@ -1,19 +1,64 @@
-// open and close add modal
-function handleModal() {
-  generateCalendar(date)
-  addModal.classList.toggle('visually-hidden')
+// open modal functions
+// 소비내역, 예산 추가 모달 열기
+function openAddModal() {
+  if (this == addButton) {
+    spendModalTitle.innerText = '소비 내역'
+    generateSpendCatagory()
+  }
+  if (this == addBudgetButton) {
+    spendModalTitle.innerText = '예산 추가'
+    spendExpense.setAttribute('placeholder', '추가 금액(필수)')
+    generateIncomeCatagory()
+    spendStar.parentElement.classList.add('visually-hidden')
+    spendSaveButton.classList.add('add-budget')
+  }
+  spendDate.innerText = `${nowYear}년 ${nowMonth}월 ${nowDate}일 ${nowDay}`
+  spendModal.classList.remove('visually-hidden')
 }
+addButton.addEventListener('click', openAddModal)
+addBudgetButton.addEventListener('click', openAddModal)
 
-addButton.addEventListener('click', handleModal)
-modalCloseButton.addEventListener('click', handleModal)
+// 소비내역 수정, 삭제 모달 열기
+function openSpendModifyModal(e) {
+  const targetList = e.target.closest('.spend-list-item')
+  if (targetList) {
+    savedSpendList.forEach((i) => {
+      if (i.id == targetList.id) {
+        spendDate.innerText = i.date
+        spendExpense.value = i.expense
+        spendCatagory.value = i.catagory
+        spendTitle.value = i.title
+        spendMemo.value = i.memo
+        if (i.star) spendStar.classList.add('red')
+      }
+    })
+  }
+  generateSpendCatagory()
+  spendModalTitle.innerText = '소비 내역'
+  spendCatagory.style.color = '#3d434b'
+  spendDeleteButton.classList.remove('visually-hidden')
+  spendSaveButton.removeAttribute('disabled')
+  spendSaveButton.classList.add('modify-spend')
+  spendModal.classList.remove('visually-hidden')
+}
+spendListDiv.addEventListener('click', openSpendModifyModal)
+
+// close modal
+// 모달 닫기 버튼은 소비추가, 예산추가, 내용수정 모두 동일.
+function closeSpendModal() {
+  spendModal.classList.add('visually-hidden')
+  resetModalInput()
+}
+modalCloseButton.addEventListener('click', closeSpendModal)
 
 // calculate total spend
-function calTotalSpend(expenseValue) {
+// 로컬에 값이 저장되면 expense를 받아와 spend-summary 영역에 반영
+function calcTotalSpend(expenseValue) {
   const expenseNum = parseInt(expenseValue.replaceAll(',', ''))
   totalSpendMoney += expenseNum
   totalSpend.innerText = `${totalSpendMoney.toLocaleString('ko-KR')}원`
 
-  const spendBar = document.querySelector('.spend-summary-bar-active')
+  const spendBar = document.querySelector('.spend-summary .bar-active')
   const savedBudget = parseInt(
     localStorage.getItem('budget').replaceAll(',', '')
   )
@@ -30,9 +75,8 @@ function calTotalSpend(expenseValue) {
 }
 
 // generate spend list
+// 새로운 소비내역 작성 후 저장시 리스트 생성
 function generateSpendList(spendList) {
-  calTotalSpend(spendList.expense)
-
   const contentList = document.createElement('li')
   contentList.className = 'spend-list-item'
   contentList.id = spendList.id
@@ -78,10 +122,13 @@ function generateSpendList(spendList) {
   } else {
     ol.appendChild(contentList)
   }
-}
 
+  // calculate total expense
+  calcTotalSpend(spendList.expense)
+}
 const savedSpendList = JSON.parse(localStorage.getItem('spendList'))
 
+// 새로고침 시 저장된 데이터로 리스트 생성 or 데이터 없으면 empty 화면 출력
 if (savedSpendList == null) {
   spendEmpty.classList.remove('visually-hidden')
 } else {

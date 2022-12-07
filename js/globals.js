@@ -1,4 +1,4 @@
-// change to currency in bedget input
+// change number to currency
 function toCurrency(e) {
   let value = e.target.value
 
@@ -11,4 +11,11 @@ function toCurrency(e) {
   e.target.value = formatValue
 }
 
-budgetInputs.forEach((i) => i.addEventListener('keyup', toCurrency))
+moneyInputs.forEach((i) => i.addEventListener('keyup', toCurrency))
+
+// change select color
+function handleSelectColor(e) {
+  e.target.style.color = '#3d434b'
+}
+
+selects.forEach((i) => i.addEventListener('change', handleSelectColor))
