@@ -103,9 +103,8 @@ function resetModalInput() {
   spendSaveButton.className = 'spend-modal-save-button button button-green'
 }
 
-// 여기서부터 문제다
 // save spend data
-
+// 저장된 spend list array를 로컬에 저장
 function saveSpend() {
   localStorage.setItem('spendList', JSON.stringify(spends))
 }
