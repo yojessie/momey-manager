@@ -109,13 +109,21 @@ function saveSpend() {
   localStorage.setItem('spendList', JSON.stringify(spends))
 }
 
+function getDateId() {
+  const month = selectedMonth.toString().padStart(2, '0')
+  const date = selectedDate.toString().padStart(2, '0')
+  const fullDate = selectedYear + month + date
+
+  return parseInt(fullDate)
+}
+
 function submitSpendList(e) {
   e.preventDefault()
 
   const spendList = {
     id: Date.now(),
     date: spendDate.innerText,
-    dateId: `${selectedYear}-${selectedMonth}-${selectedDate}`,
+    dateId: getDateId(),
     expense: spendExpense.value,
     catagory: spendCatagory.value,
     title: spendTitle.value,
@@ -124,7 +132,9 @@ function submitSpendList(e) {
   }
 
   spends.push(spendList)
+  spends.sort((a, b) => b.dateId - a.dateId)
   saveSpend()
+
   generateSpendList(spendList)
   closeSpendModal()
 }

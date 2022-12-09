@@ -32,14 +32,14 @@ function openSpendModifyModal(e) {
         if (i.star) spendStar.classList.add('red')
       }
     })
+    generateSpendCatagory()
+    spendModalTitle.innerText = '소비 내역'
+    spendCatagory.style.color = '#3d434b'
+    spendDeleteButton.classList.remove('visually-hidden')
+    spendSaveButton.removeAttribute('disabled')
+    spendSaveButton.classList.add('modify-spend')
+    spendModal.classList.remove('visually-hidden')
   }
-  generateSpendCatagory()
-  spendModalTitle.innerText = '소비 내역'
-  spendCatagory.style.color = '#3d434b'
-  spendDeleteButton.classList.remove('visually-hidden')
-  spendSaveButton.removeAttribute('disabled')
-  spendSaveButton.classList.add('modify-spend')
-  spendModal.classList.remove('visually-hidden')
 }
 spendListDiv.addEventListener('click', openSpendModifyModal)
 
@@ -116,9 +116,20 @@ function generateSpendList(spendList) {
 
     newOl.appendChild(titleList)
     newOl.appendChild(contentList)
-    spendListDiv.appendChild(newOl)
 
-    spendEmpty.classList.add('visually-hidden')
+    const oldOl = document.querySelectorAll('.spend-list-day')
+    if (oldOl.length == 0) {
+      spendListDiv.appendChild(newOl)
+      spendEmpty.classList.add('visually-hidden')
+    } else {
+      for (let i of oldOl) {
+        if (newOl.id > i.id) {
+          spendListDiv.insertBefore(newOl, i)
+          return
+        }
+      }
+      spendListDiv.appendChild(newOl)
+    }
   } else {
     ol.appendChild(contentList)
   }
