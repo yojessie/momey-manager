@@ -101,6 +101,9 @@ function resetModalInput() {
   spendDeleteButton.classList.add('visually-hidden')
   spendSaveButton.setAttribute('disabled', '')
   spendSaveButton.className = 'spend-modal-save-button button button-green'
+  selectedYear = nowYear
+  selectedMonth = nowMonth
+  selectedDate = nowDate
 }
 
 // save spend data
