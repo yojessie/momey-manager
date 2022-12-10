@@ -139,6 +139,7 @@ function submitSpendList(e) {
   saveSpend()
 
   generateSpendList(spendList)
+  calcTotalSpend(spendList.expense)
   closeSpendModal()
 }
 

@@ -133,9 +133,6 @@ function generateSpendList(spendList) {
   } else {
     ol.appendChild(contentList)
   }
-
-  // calculate total expense
-  calcTotalSpend(spendList.expense)
 }
 const savedSpendList = JSON.parse(localStorage.getItem('spendList'))
 

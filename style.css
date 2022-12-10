@@ -517,6 +517,8 @@ input[type='number'] {
     .button-green:hover {
       background-color: #8cc051;
       opacity: 100; }
+  .button:focus {
+    box-shadow: 0 8px #3d434b; }
   .button:disabled {
     cursor: default;
     background-color: rgba(61, 67, 75, 0.5);
