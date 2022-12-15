@@ -133,7 +133,7 @@ function generateSpendList(listData) {
         <span class="blue-text">${listData.title}</span>
         <i class="icon-star"></i>
       </div>
-      <span class="expense blue-text">${listData.expense}원</span>
+      <span class="expense blue-text">+ ${listData.expense}원</span>
     </div>
     <span class="memo">${listData.memo}</span>`
 
