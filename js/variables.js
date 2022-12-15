@@ -17,17 +17,17 @@ const startButton = document.querySelector('.setting-start-button')
 
 // SPEND
 const spendPage = document.querySelector('.spend')
-const totalSpend = document.querySelector('.spend-summary .title')
-let totalSpendMoney = 0
+const totalSpendText = document.querySelector('.spend-summary .title')
 const spendTerm = document.querySelector('.spend-summary .term')
-const budget = document.querySelector('.spend-summary .budget span')
+const budgetText = document.querySelector('.spend-summary .budget span')
 const addBudgetButton = document.querySelector('.spend-summary .budget button')
-const addButton = document.querySelector('.spend-add-button')
+const addSpendButton = document.querySelector('.spend-add-button')
 const spendEmpty = document.querySelector('.spend-empty')
 const spendListDiv = document.querySelector('.spend-list')
 
 // SPEND MODAL
-let spends = []
+let spendListData = []
+const savedSpendListData = JSON.parse(localStorage.getItem('spendListData'))
 const spendModal = document.querySelector('.spend-modal')
 const modalInputGroup = document.querySelector(
   '.spend-modal-content .input-group'
@@ -43,6 +43,9 @@ const spendStar = modalInputGroup.querySelector('.spend-star i')
 const spendDeleteButton = document.querySelector('.spend-list-delete-button')
 const spendSaveButton = document.querySelector('.spend-modal-save-button')
 const modalCloseButton = document.querySelector('.spend-modal-close-button')
+const budgetSaveButton = document.querySelector(
+  '.spend-modal-save-button.add-budget'
+)
 
 // CALENDAR
 const calendarModal = document.querySelector('.calendar')

@@ -9,8 +9,8 @@ function addStartDayOptionse() {
 }
 
 function openSettingPage() {
-  introPage.classList.toggle('visually-hidden')
-  settingPage.classList.toggle('visually-hidden')
+  introPage.classList.add('visually-hidden')
+  settingPage.classList.remove('visually-hidden')
   addStartDayOptionse()
 }
 

@@ -60,8 +60,8 @@ function closeCalendar() {
     weekDay[new Date(selectedYear, selectedMonth - 1, selectedDate).getDay()]
   spendDate.innerText = `${selectedYear}년 ${selectedMonth}월 ${selectedDate}일 ${selectedDay}`
 
-  calendarModal.classList.toggle('visually-hidden')
-  overlay.classList.toggle('visually-hidden')
+  calendarModal.classList.add('visually-hidden')
+  overlay.classList.add('visually-hidden')
 }
 
 calendarDoneButton.addEventListener('click', closeCalendar)

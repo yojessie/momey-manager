@@ -41,15 +41,15 @@
         transition: all 1s ease-in-out;
       }
 
-      .bar-green {
+      .green-bar {
         background-color: $green;
       }
 
-      .bar-yellow {
+      .yellow-bar {
         background-color: $yellow;
       }
 
-      .bar-red {
+      .red-bar {
         background-color: $red;
       }
     }
@@ -166,6 +166,14 @@
           .expense {
             width: 84px;
             text-align: right;
+          }
+
+          .blue-border {
+            border: 1px solid $blue;
+          }
+
+          .blue-text {
+            color: $blue;
           }
         }
 

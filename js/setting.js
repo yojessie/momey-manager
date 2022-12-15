@@ -18,8 +18,8 @@ budgetInput.addEventListener('keyup', activeStartButton)
 
 // set budget data and switch screens
 function switchIntroSpend() {
-  introPage.classList.toggle('visually-hidden')
-  spendPage.classList.toggle('visually-hidden')
+  settingPage.classList.add('visually-hidden')
+  spendPage.classList.remove('visually-hidden')
 }
 
 function generateSpendSummary() {
@@ -32,16 +32,19 @@ function generateSpendSummary() {
     nextMonth = nowMonth
   }
 
-  totalSpend.innerText = `0원`
+  totalSpendText.innerText = `0원`
   spendTerm.innerText = `${nowMonth}월 ${savedStartDay}일 - ${nextMonth}월 ${savedEndDay}일`
-  budget.innerText = `이번달 예산 : ${savedBudget}원`
+  budgetText.innerText = `이번달 예산 : ${savedBudget}원`
 
   switchIntroSpend()
 }
 
-function saveSettingValues() {
+function saveSettingValues(e) {
+  e.preventDefault()
+
   localStorage.setItem('startDay', startDaySelect.value)
   localStorage.setItem('budget', budgetInput.value)
+  localStorage.setItem('totalSpend', 0)
 
   generateSpendSummary()
 }
@@ -49,5 +52,6 @@ function saveSettingValues() {
 if (localStorage.getItem('budget') == null) {
   startButton.addEventListener('click', saveSettingValues)
 } else {
+  introPage.classList.add('visually-hidden')
   generateSpendSummary()
 }

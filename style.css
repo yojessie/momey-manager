@@ -723,11 +723,11 @@ body {
         border-radius: 4px;
         box-sizing: content-box;
         transition: all 1s ease-in-out; }
-      .spend-summary .bar .bar-green {
+      .spend-summary .bar .green-bar {
         background-color: #a0d468; }
-      .spend-summary .bar .bar-yellow {
+      .spend-summary .bar .yellow-bar {
         background-color: #ffce55; }
-      .spend-summary .bar .bar-red {
+      .spend-summary .bar .red-bar {
         background-color: #ed5564; }
     .spend-summary .term {
       margin-bottom: 8px;
@@ -824,6 +824,10 @@ body {
           .spend-list-item button .content .expense {
             width: 84px;
             text-align: right; }
+          .spend-list-item button .content .blue-border {
+            border: 1px solid #5d9cec; }
+          .spend-list-item button .content .blue-text {
+            color: #5d9cec; }
         .spend-list-item button .memo {
           font-size: 12px;
           font-weight: 500;
