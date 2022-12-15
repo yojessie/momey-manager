@@ -214,12 +214,8 @@ spendSaveButton.addEventListener('click', submitSpendList)
 
 // spend-summary 영역 total 금액 계산
 function calcTotalSpendBudget(expenseValue) {
-  let totalSpendMoney = parseInt(
-    localStorage.getItem('totalSpend').replaceAll(',', '')
-  )
-  let totalBudgetMoney = parseInt(
-    localStorage.getItem('budget').replaceAll(',', '')
-  )
+  let totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
+  let totalBudgetMoney = parseInt(localStorage.getItem('budget'))
 
   if (spendSaveButton.classList.contains('add-budget')) {
     totalBudgetMoney += parseInt(expenseValue.replaceAll(',', ''))
@@ -233,12 +229,8 @@ function calcTotalSpendBudget(expenseValue) {
 
 // 계산된 소비, 예산 합계 표시
 function showTotalSpendSummary() {
-  const totalSpendMoney = parseInt(
-    localStorage.getItem('totalSpend').replaceAll(',', '')
-  )
-  const totalBudgetMoney = parseInt(
-    localStorage.getItem('budget').replaceAll(',', '')
-  )
+  const totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
+  const totalBudgetMoney = parseInt(localStorage.getItem('budget'))
 
   totalSpendText.innerText = `${totalSpendMoney.toLocaleString('ko-KR')}원`
   budgetText.innerText = `이번달 예산 : ${totalBudgetMoney.toLocaleString(
@@ -267,6 +259,7 @@ function showSpendBar(totalSpendMoney, totalBudgetMoney) {
 
 // 새로고침 시 저장된 데이터로 리스트 생성 or 데이터 없으면 empty 화면 출력
 if (savedSpendListData == null) {
+  localStorage.setItem('totalSpend', 0)
   spendEmpty.classList.remove('visually-hidden')
 } else {
   spendEmpty.classList.add('visually-hidden')

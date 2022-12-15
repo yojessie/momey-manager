@@ -25,7 +25,7 @@ function switchIntroSpend() {
 function generateSpendSummary() {
   const savedStartDay = localStorage.getItem('startDay')
   let savedEndDay = savedStartDay - 1
-  const savedBudget = localStorage.getItem('budget')
+  const savedBudget = parseInt(localStorage.getItem('budget'))
 
   if (savedStartDay == 1) {
     savedEndDay = new Date(nowYear, nowMonth, 0).getDate()
@@ -34,7 +34,9 @@ function generateSpendSummary() {
 
   totalSpendText.innerText = `0원`
   spendTerm.innerText = `${nowMonth}월 ${savedStartDay}일 - ${nextMonth}월 ${savedEndDay}일`
-  budgetText.innerText = `이번달 예산 : ${savedBudget}원`
+  budgetText.innerText = `이번달 예산 : ${savedBudget.toLocaleString(
+    'ko-KR'
+  )}원`
 
   switchIntroSpend()
 }
@@ -43,7 +45,7 @@ function saveSettingValues(e) {
   e.preventDefault()
 
   localStorage.setItem('startDay', startDaySelect.value)
-  localStorage.setItem('budget', budgetInput.value)
+  localStorage.setItem('budget', budgetInput.value.replaceAll(',', ''))
   localStorage.setItem('totalSpend', 0)
 
   generateSpendSummary()
