@@ -53,3 +53,14 @@ function generateCatagory(sort) {
     spendCatagory.appendChild(option)
   }
 }
+
+// 금액 데이터 타입 정리 함수
+// function moneyValueType(value, func, key) {
+//   if (func == 'set') {
+//     return localStorage.setItem(key, value.replaceAll(',', ''))
+//   } else if (func == 'get') {
+//     return parseInt(localStorage.getItem(key))
+//   } else if (func == 'innerText') {
+//     return value.toLocaleString('ko-KR')
+//   }
+// }
