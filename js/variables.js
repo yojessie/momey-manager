@@ -27,6 +27,7 @@ const spendListDiv = document.querySelector('.spend-list')
 
 // SPEND MODAL
 let spendListData = []
+let indexOfTargetList = null
 const savedSpendListData = JSON.parse(localStorage.getItem('spendListData'))
 const spendModal = document.querySelector('.spend-modal')
 const modalInputGroup = document.querySelector(

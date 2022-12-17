@@ -40,6 +40,8 @@ function openModifyModal(e) {
         spendTitle.value = i.title
         spendMemo.value = i.memo
         if (i.star) spendStar.classList.add('red')
+
+        indexOfTargetList = savedSpendListData.indexOf(i)
       }
     })
   }
@@ -92,6 +94,77 @@ function resetModal() {
 }
 
 //// 모달 데이터 저장 및 수정 관련 함수
+// 리스트 추가 함수
+function addSpendList() {
+  const listData = {
+    id: Date.now(),
+    section: 'spend',
+    date: spendDate.innerText,
+    dateId: getDateId(),
+    expense: spendExpense.value,
+    catagory: spendCatagory.value,
+    title: spendTitle.value,
+    memo: spendMemo.value,
+    star: spendStar.classList.contains('red'),
+  }
+  if (spendSaveButton.classList.contains('add-budget')) {
+    listData.section = 'budget'
+  }
+  spendListData.push(listData)
+  spendListData.sort((a, b) => b.dateId - a.dateId)
+  saveSpendList()
+
+  generateSpendList(listData)
+  plusTotalMoney(listData.expense)
+}
+
+// 리스트 수정 함수
+function modifySpendList() {
+  const targetList = spendListData[indexOfTargetList]
+
+  const listData = {
+    id: targetList.id,
+    section: targetList.section,
+    date: spendDate.innerText,
+    dateId: getDateId(),
+    expense: spendExpense.value,
+    catagory: spendCatagory.value,
+    title: spendTitle.value,
+    memo: spendMemo.value,
+    star: spendStar.classList.contains('red'),
+  }
+
+  const targetExpense = parseInt(targetList.expense.replaceAll(',', ''))
+  const newExpense = parseInt(listData.expense.replaceAll(',', ''))
+  if (targetExpense > newExpense) {
+    const calcAmouunt = targetExpense - newExpense
+    minusTotalMoney(calcAmouunt.toString())
+  } else if (targetExpense < newExpense) {
+    const calcAmouunt = newExpense - targetExpense
+    plusTotalMoney(calcAmouunt.toString())
+  }
+
+  spendListData[indexOfTargetList] = listData
+  saveSpendList()
+
+  const savedSpendListData = JSON.parse(localStorage.getItem('spendListData'))
+  spendListDiv.innerHTML = ''
+  savedSpendListData.forEach(generateSpendList)
+}
+
+// 리스트 삭제 함수
+function deleteSpendList() {
+  minusTotalMoney(spendListData[indexOfTargetList].expense)
+  spendListData.splice(indexOfTargetList, 1)
+  saveSpendList()
+
+  const savedSpendListData = JSON.parse(localStorage.getItem('spendListData'))
+  spendListDiv.innerHTML = ''
+  savedSpendListData.forEach(generateSpendList)
+  closeSpendModal()
+}
+spendDeleteButton.addEventListener('click', deleteSpendList)
+
 // spendListData array를 로컬에 저장
 function saveSpendList() {
   localStorage.setItem('spendListData', JSON.stringify(spendListData))
@@ -187,33 +260,17 @@ function generateSpendList(listData) {
 function submitSpendList(e) {
   e.preventDefault()
 
-  const listData = {
-    id: Date.now(),
-    section: 'spend',
-    date: spendDate.innerText,
-    dateId: getDateId(),
-    expense: spendExpense.value,
-    catagory: spendCatagory.value,
-    title: spendTitle.value,
-    memo: spendMemo.value,
-    star: spendStar.classList.contains('red'),
+  if (this.classList.contains('modify')) {
+    modifySpendList()
+  } else {
+    addSpendList()
   }
-  if (spendSaveButton.classList.contains('add-budget')) {
-    listData.section = 'budget'
-  }
-
-  spendListData.push(listData)
-  spendListData.sort((a, b) => b.dateId - a.dateId)
-  saveSpendList()
-
-  generateSpendList(listData)
-  calcTotalSpendBudget(listData.expense)
   closeSpendModal()
 }
 spendSaveButton.addEventListener('click', submitSpendList)
 
-// spend-summary 영역 total 금액 계산
-function calcTotalSpendBudget(expenseValue) {
+// spend-summary 영역 total 금액 더하기
+function plusTotalMoney(expenseValue) {
   let totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
   let totalBudgetMoney = parseInt(localStorage.getItem('budget'))
 
@@ -222,6 +279,21 @@ function calcTotalSpendBudget(expenseValue) {
     localStorage.setItem('budget', totalBudgetMoney)
   } else {
     totalSpendMoney += parseInt(expenseValue.replaceAll(',', ''))
+    localStorage.setItem('totalSpend', totalSpendMoney)
+  }
+  showTotalSpendSummary()
+}
+
+// spend-summary 영역 total 금액 빼기
+function minusTotalMoney(expenseValue) {
+  let totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
+  let totalBudgetMoney = parseInt(localStorage.getItem('budget'))
+
+  if (spendSaveButton.classList.contains('add-budget')) {
+    totalBudgetMoney -= parseInt(expenseValue.replaceAll(',', ''))
+    localStorage.setItem('budget', totalBudgetMoney)
+  } else {
+    totalSpendMoney -= parseInt(expenseValue.replaceAll(',', ''))
     localStorage.setItem('totalSpend', totalSpendMoney)
   }
   showTotalSpendSummary()
