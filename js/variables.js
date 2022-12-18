@@ -3,7 +3,7 @@ const moneyInputs = document.querySelectorAll('.money-input input')
 const selects = document.querySelectorAll('.details.select')
 
 // GNB
-const gnbSetting = document.querySelector('.gnb-setting')
+const gnbSettingButton = document.querySelector('.gnb-setting')
 const gnbButton = document.querySelector('.gnb-title')
 const gnbTitle = document.querySelector('.gnb-title h2')
 const gnbTitleChevron = document.querySelector('.gnb-title i')
@@ -22,6 +22,7 @@ const introPlusButton = document.querySelector('.intro-plus-button')
 const settingPage = document.querySelector('.setting')
 const startDaySelect = document.querySelector('.setting-input-group select')
 const budgetInput = document.querySelector('.setting .money-input input')
+const settingSubtxt = document.querySelector('.setting .subtxt')
 const startButton = document.querySelector('.setting-start-button')
 
 // SPEND

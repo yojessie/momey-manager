@@ -37,8 +37,9 @@ function generateSpendSummary() {
   budgetText.innerText = `이번달 예산 : ${savedBudget.toLocaleString(
     'ko-KR'
   )}원`
-
+  showTotalSpendSummary()
   openSpendPage()
+  gnbSettingButton.removeAttribute('disabled')
 }
 
 function saveSettingValues(e) {
@@ -46,22 +47,50 @@ function saveSettingValues(e) {
 
   localStorage.setItem('startDay', startDaySelect.value)
   localStorage.setItem('budget', budgetInput.value.replaceAll(',', ''))
-  localStorage.setItem('totalSpend', 0)
-  localStorage.setItem('totalIncome', 0)
+
+  if (spendListData.length == 0) {
+    localStorage.setItem('totalSpend', 0)
+    localStorage.setItem('totalIncome', 0)
+  }
 
   generateSpendSummary()
 }
+startButton.addEventListener('click', saveSettingValues)
 
-if (localStorage.getItem('budget') == null) {
-  startButton.addEventListener('click', saveSettingValues)
-} else {
+if (localStorage.getItem('budget') !== null) {
+  // startButton.addEventListener('click', saveSettingValues)
   introPage.classList.add('visually-hidden')
   generateSpendSummary()
 }
 
-// // 설정 아이콘 클릭 시
-// function openSettingPage() {
-//   spendPage.classList.add('visually-hidden')
-//   settingPage.classList.remove('visually-hidden')
-// }
-// gnbSetting.addEventListener('click', openSettingPage)
+// 설정 아이콘 클릭 시
+function handleSettingPage() {
+  if (settingPage.classList.contains('visually-hidden')) {
+    openSettingPage()
+  } else {
+    closeSettingPage()
+  }
+}
+
+function openSettingPage() {
+  addStartDayOptionse()
+  const savedStartDay = parseInt(localStorage.getItem('startDay'))
+  const savedBudget = parseInt(localStorage.getItem('budget'))
+
+  startDaySelect.value = savedStartDay
+  startDaySelect.style.color = '#3d434b'
+  budgetInput.value = savedBudget.toLocaleString('ko-KR')
+
+  startButton.innerText = '수정하기'
+  settingSubtxt.innerText = '월 시작일이나 예산을 수정할 수 있어요'
+
+  spendPage.classList.add('visually-hidden')
+  settingPage.classList.remove('visually-hidden')
+}
+
+function closeSettingPage() {
+  spendPage.classList.remove('visually-hidden')
+  settingPage.classList.add('visually-hidden')
+}
+
+gnbSettingButton.addEventListener('click', handleSettingPage)

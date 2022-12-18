@@ -54,6 +54,35 @@ function generateCatagory(sort) {
   }
 }
 
+// 계산된 소비, 예산 합계 표시
+function showTotalSpendSummary() {
+  const totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
+  const totalIncomeMoney = parseInt(localStorage.getItem('totalIncome'))
+  let newBudget = parseInt(localStorage.getItem('budget')) + totalIncomeMoney
+
+  totalSpendText.innerText = `${totalSpendMoney.toLocaleString('ko-KR')}원`
+  budgetText.innerText = `이번달 예산 : ${newBudget.toLocaleString('ko-KR')}원`
+
+  showSpendBar(totalSpendMoney, newBudget)
+}
+
+// 예산 대비 소비금액 계산해서 바 그래프에 표시
+function showSpendBar(totalSpendMoney, newBudget) {
+  const spendBar = document.querySelector('.spend-summary .bar-active')
+
+  const percentWidth = (totalSpendMoney / newBudget) * 100
+  spendBar.style.width = `${percentWidth}%`
+  spendBar.className = 'bar-active'
+
+  if (percentWidth > 80) {
+    spendBar.classList.add('red-bar')
+  } else if (percentWidth > 50) {
+    spendBar.classList.add('yellow-bar')
+  } else {
+    spendBar.classList.add('green-bar')
+  }
+}
+
 // 금액 데이터 타입 정리 함수
 // function moneyValueType(value, func, key) {
 //   if (func == 'set') {
