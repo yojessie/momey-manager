@@ -162,6 +162,10 @@ function deleteSpendList() {
   spendListDiv.innerHTML = ''
   savedSpendListData.forEach(generateSpendList)
   closeSpendModal()
+
+  if (spendListData.length == 0) {
+    spendEmpty.classList.remove('visually-hidden')
+  }
 }
 spendDeleteButton.addEventListener('click', deleteSpendList)
 
@@ -331,7 +335,6 @@ function showSpendBar(totalSpendMoney, totalBudgetMoney) {
 
 // 새로고침 시 저장된 데이터로 리스트 생성 or 데이터 없으면 empty 화면 출력
 if (savedSpendListData == null) {
-  localStorage.setItem('totalSpend', 0)
   spendEmpty.classList.remove('visually-hidden')
 } else {
   spendEmpty.classList.add('visually-hidden')
