@@ -3,7 +3,15 @@ const moneyInputs = document.querySelectorAll('.money-input input')
 const selects = document.querySelectorAll('.details.select')
 
 // GNB
+const gnbButton = document.querySelector('.gnb-title')
 const gnbTitle = document.querySelector('.gnb-title h2')
+const gnbTitleChevron = document.querySelector('.gnb-title i')
+const gnbMenu = document.querySelector('.gnb-menu')
+const monthlyExpense = gnbMenu.querySelector('.monthly-expense')
+const totalExpense = gnbMenu.querySelector('.total-expense')
+const totalSaving = gnbMenu.querySelector('.total-saving')
+const fixedExpense = gnbMenu.querySelector('.fixed-expense')
+const preparingPage = document.querySelector('.preparing')
 
 // INTRO
 const introPage = document.querySelector('.intro')

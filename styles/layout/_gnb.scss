@@ -16,6 +16,7 @@
     i {
       font-size: 16px;
       color: $black50;
+      transition: rotate 500ms ease-in-out;
     }
   }
 
@@ -37,5 +38,55 @@
 
   100% {
     transform: rotate(45deg);
+  }
+}
+
+.gnb-menu {
+  position: absolute;
+  top: 64px;
+  left: 16px;
+  z-index: $gnb-menu-level;
+
+  &-list {
+    width: 160px;
+    padding: 8px 0;
+    background-color: $white;
+    border: 1px solid $black;
+    border-radius: 8px;
+
+    &-item {
+      button {
+        width: 100%;
+        padding: 12px 20px;
+        font-weight: $font-bold;
+        text-align: left;
+
+        &:hover {
+          background-color: $background;
+        }
+      }
+
+      .is-active {
+        color: $blue;
+      }
+    }
+  }
+}
+
+.preparing {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: $preparing-page-level;
+  width: 100%;
+  height: calc(100% - 72px);
+  padding: 0 24px;
+  padding-bottom: 32px;
+  background-color: $background;
+
+  &-message {
+    height: 100%;
+    color: $black;
+    background-color: $black30;
   }
 }
