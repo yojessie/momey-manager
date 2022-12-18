@@ -17,7 +17,7 @@ startDaySelect.addEventListener('change', activeStartButton)
 budgetInput.addEventListener('keyup', activeStartButton)
 
 // set budget data and switch screens
-function switchIntroSpend() {
+function openSpendPage() {
   settingPage.classList.add('visually-hidden')
   spendPage.classList.remove('visually-hidden')
 }
@@ -38,7 +38,7 @@ function generateSpendSummary() {
     'ko-KR'
   )}원`
 
-  switchIntroSpend()
+  openSpendPage()
 }
 
 function saveSettingValues(e) {
@@ -47,6 +47,7 @@ function saveSettingValues(e) {
   localStorage.setItem('startDay', startDaySelect.value)
   localStorage.setItem('budget', budgetInput.value.replaceAll(',', ''))
   localStorage.setItem('totalSpend', 0)
+  localStorage.setItem('totalIncome', 0)
 
   generateSpendSummary()
 }
@@ -57,3 +58,10 @@ if (localStorage.getItem('budget') == null) {
   introPage.classList.add('visually-hidden')
   generateSpendSummary()
 }
+
+// // 설정 아이콘 클릭 시
+// function openSettingPage() {
+//   spendPage.classList.add('visually-hidden')
+//   settingPage.classList.remove('visually-hidden')
+// }
+// gnbSetting.addEventListener('click', openSettingPage)

@@ -9,16 +9,16 @@ function openAddSpendModal() {
 addSpendButton.addEventListener('click', openAddSpendModal)
 
 // 예산추가 모달 열기
-function openAddBudgetModal() {
+function openAddIncomeModal() {
   generateCatagory(catagories.income)
   spendModalTitle.innerText = '예산 추가'
   spendDate.innerText = `${nowYear}년 ${nowMonth}월 ${nowDate}일 ${nowDay}`
-  spendExpense.setAttribute('placeholder', '추가 금액(필수)')
+  spendMoney.setAttribute('placeholder', '추가 금액(필수)')
   spendStar.parentElement.classList.add('visually-hidden')
-  spendSaveButton.classList.add('add-budget')
+  spendSaveButton.classList.add('add-income')
   spendModal.classList.remove('visually-hidden')
 }
-addBudgetButton.addEventListener('click', openAddBudgetModal)
+addIncomeButton.addEventListener('click', openAddIncomeModal)
 
 // 리스트 클릭 시 수정 모달 열기
 function openModifyModal(e) {
@@ -26,8 +26,8 @@ function openModifyModal(e) {
   const savedSpendListData = JSON.parse(localStorage.getItem('spendListData'))
 
   if (targetList) {
-    if (targetList.classList.contains('budget')) {
-      openAddBudgetModal()
+    if (targetList.classList.contains('income')) {
+      openAddIncomeModal()
     } else {
       openAddSpendModal()
     }
@@ -35,7 +35,7 @@ function openModifyModal(e) {
     savedSpendListData.forEach((i) => {
       if (i.id == targetList.id) {
         spendDate.innerText = i.date
-        spendExpense.value = i.expense
+        spendMoney.value = i.money
         spendCatagory.value = i.catagory
         spendTitle.value = i.title
         spendMemo.value = i.memo
@@ -56,7 +56,7 @@ spendListDiv.addEventListener('click', openModifyModal)
 // 모달 내 인풋 채우면 저장버튼 활성화
 function activeModalSaveButton() {
   if (
-    spendExpense.value !== '' &&
+    spendMoney.value !== '' &&
     spendCatagory.value !== '' &&
     spendTitle.value !== ''
   ) {
@@ -65,7 +65,7 @@ function activeModalSaveButton() {
     spendSaveButton.setAttribute('disabled', '')
   }
 }
-spendExpense.addEventListener('keyup', activeModalSaveButton)
+spendMoney.addEventListener('keyup', activeModalSaveButton)
 spendCatagory.addEventListener('change', activeModalSaveButton)
 spendTitle.addEventListener('keyup', activeModalSaveButton)
 
@@ -78,7 +78,7 @@ modalCloseButton.addEventListener('click', closeSpendModal)
 
 function resetModal() {
   spendDate.innerText = `${nowYear}년 ${nowMonth}월 ${nowDate}일 ${nowDay}`
-  spendExpense.value = ''
+  spendMoney.value = ''
   spendCatagory.value = ''
   spendCatagory.style.color = 'rgba(61, 67, 75, 0.3)'
   spendTitle.value = ''
@@ -101,21 +101,21 @@ function addSpendList() {
     section: 'spend',
     date: spendDate.innerText,
     dateId: getDateId(),
-    expense: spendExpense.value,
+    money: spendMoney.value,
     catagory: spendCatagory.value,
     title: spendTitle.value,
     memo: spendMemo.value,
     star: spendStar.classList.contains('red'),
   }
-  if (spendSaveButton.classList.contains('add-budget')) {
-    listData.section = 'budget'
+  if (spendSaveButton.classList.contains('add-income')) {
+    listData.section = 'income'
   }
   spendListData.push(listData)
   spendListData.sort((a, b) => b.dateId - a.dateId)
   saveSpendList()
 
   generateSpendList(listData)
-  plusTotalMoney(listData.expense)
+  plusTotalMoney(listData.money)
 }
 
 // 리스트 수정 함수
@@ -127,20 +127,20 @@ function modifySpendList() {
     section: targetList.section,
     date: spendDate.innerText,
     dateId: getDateId(),
-    expense: spendExpense.value,
+    money: spendMoney.value,
     catagory: spendCatagory.value,
     title: spendTitle.value,
     memo: spendMemo.value,
     star: spendStar.classList.contains('red'),
   }
 
-  const targetExpense = parseInt(targetList.expense.replaceAll(',', ''))
-  const newExpense = parseInt(listData.expense.replaceAll(',', ''))
-  if (targetExpense > newExpense) {
-    const calcAmouunt = targetExpense - newExpense
+  const targetMoney = parseInt(targetList.money.replaceAll(',', ''))
+  const newMoney = parseInt(listData.money.replaceAll(',', ''))
+  if (targetMoney > newMoney) {
+    const calcAmouunt = targetMoney - newMoney
     minusTotalMoney(calcAmouunt.toString())
-  } else if (targetExpense < newExpense) {
-    const calcAmouunt = newExpense - targetExpense
+  } else if (targetMoney < newMoney) {
+    const calcAmouunt = newMoney - targetMoney
     plusTotalMoney(calcAmouunt.toString())
   }
 
@@ -154,7 +154,7 @@ function modifySpendList() {
 
 // 리스트 삭제 함수
 function deleteSpendList() {
-  minusTotalMoney(spendListData[indexOfTargetList].expense)
+  minusTotalMoney(spendListData[indexOfTargetList].money)
   spendListData.splice(indexOfTargetList, 1)
   saveSpendList()
 
@@ -199,7 +199,7 @@ function generateSpendList(listData) {
         <span>${listData.title}</span>
         <i class="icon-star"></i>
       </div>
-      <span class="expense">${listData.expense}원</span>
+      <span class="money">${listData.money}원</span>
     </div>
     <span class="memo">${listData.memo}</span>`
 
@@ -210,12 +210,12 @@ function generateSpendList(listData) {
         <span class="blue-text">${listData.title}</span>
         <i class="icon-star"></i>
       </div>
-      <span class="expense blue-text">+ ${listData.expense}원</span>
+      <span class="money blue-text">+ ${listData.money}원</span>
     </div>
     <span class="memo">${listData.memo}</span>`
 
-  if (listData.section == 'budget') {
-    contentList.classList.add('budget')
+  if (listData.section == 'income') {
+    contentList.classList.add('income')
     button.innerHTML = blueTemplate
   } else {
     button.innerHTML = template
@@ -274,30 +274,30 @@ function submitSpendList(e) {
 spendSaveButton.addEventListener('click', submitSpendList)
 
 // spend-summary 영역 total 금액 더하기
-function plusTotalMoney(expenseValue) {
+function plusTotalMoney(moneyValue) {
   let totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
-  let totalBudgetMoney = parseInt(localStorage.getItem('budget'))
+  let totalIncomeMoney = parseInt(localStorage.getItem('totalIncome'))
 
-  if (spendSaveButton.classList.contains('add-budget')) {
-    totalBudgetMoney += parseInt(expenseValue.replaceAll(',', ''))
-    localStorage.setItem('budget', totalBudgetMoney)
+  if (spendSaveButton.classList.contains('add-income')) {
+    totalIncomeMoney += parseInt(moneyValue.replaceAll(',', ''))
+    localStorage.setItem('totalIncome', totalIncomeMoney)
   } else {
-    totalSpendMoney += parseInt(expenseValue.replaceAll(',', ''))
+    totalSpendMoney += parseInt(moneyValue.replaceAll(',', ''))
     localStorage.setItem('totalSpend', totalSpendMoney)
   }
   showTotalSpendSummary()
 }
 
 // spend-summary 영역 total 금액 빼기
-function minusTotalMoney(expenseValue) {
+function minusTotalMoney(moneyValue) {
   let totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
-  let totalBudgetMoney = parseInt(localStorage.getItem('budget'))
+  let totalIncomeMoney = parseInt(localStorage.getItem('totalIncome'))
 
-  if (spendSaveButton.classList.contains('add-budget')) {
-    totalBudgetMoney -= parseInt(expenseValue.replaceAll(',', ''))
-    localStorage.setItem('budget', totalBudgetMoney)
+  if (spendSaveButton.classList.contains('add-income')) {
+    totalIncomeMoney -= parseInt(moneyValue.replaceAll(',', ''))
+    localStorage.setItem('totalIncome', totalIncomeMoney)
   } else {
-    totalSpendMoney -= parseInt(expenseValue.replaceAll(',', ''))
+    totalSpendMoney -= parseInt(moneyValue.replaceAll(',', ''))
     localStorage.setItem('totalSpend', totalSpendMoney)
   }
   showTotalSpendSummary()
@@ -306,21 +306,20 @@ function minusTotalMoney(expenseValue) {
 // 계산된 소비, 예산 합계 표시
 function showTotalSpendSummary() {
   const totalSpendMoney = parseInt(localStorage.getItem('totalSpend'))
-  const totalBudgetMoney = parseInt(localStorage.getItem('budget'))
+  const totalIncomeMoney = parseInt(localStorage.getItem('totalIncome'))
+  let newBudget = parseInt(localStorage.getItem('budget')) + totalIncomeMoney
 
   totalSpendText.innerText = `${totalSpendMoney.toLocaleString('ko-KR')}원`
-  budgetText.innerText = `이번달 예산 : ${totalBudgetMoney.toLocaleString(
-    'ko-KR'
-  )}원`
+  budgetText.innerText = `이번달 예산 : ${newBudget.toLocaleString('ko-KR')}원`
 
-  showSpendBar(totalSpendMoney, totalBudgetMoney)
+  showSpendBar(totalSpendMoney, newBudget)
 }
 
 // 예산 대비 소비금액 계산해서 바 그래프에 표시
-function showSpendBar(totalSpendMoney, totalBudgetMoney) {
+function showSpendBar(totalSpendMoney, newBudget) {
   const spendBar = document.querySelector('.spend-summary .bar-active')
 
-  const percentWidth = (totalSpendMoney / totalBudgetMoney) * 100
+  const percentWidth = (totalSpendMoney / newBudget) * 100
   spendBar.style.width = `${percentWidth}%`
   spendBar.className = 'bar-active'
 

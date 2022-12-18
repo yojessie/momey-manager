@@ -3,6 +3,7 @@ const moneyInputs = document.querySelectorAll('.money-input input')
 const selects = document.querySelectorAll('.details.select')
 
 // GNB
+const gnbSetting = document.querySelector('.gnb-setting')
 const gnbButton = document.querySelector('.gnb-title')
 const gnbTitle = document.querySelector('.gnb-title h2')
 const gnbTitleChevron = document.querySelector('.gnb-title i')
@@ -28,7 +29,7 @@ const spendPage = document.querySelector('.spend')
 const totalSpendText = document.querySelector('.spend-summary .title')
 const spendTerm = document.querySelector('.spend-summary .term')
 const budgetText = document.querySelector('.spend-summary .budget span')
-const addBudgetButton = document.querySelector('.spend-summary .budget button')
+const addIncomeButton = document.querySelector('.spend-summary .budget button')
 const addSpendButton = document.querySelector('.spend-add-button')
 const spendEmpty = document.querySelector('.spend-empty')
 const spendListDiv = document.querySelector('.spend-list')
@@ -44,7 +45,7 @@ const modalInputGroup = document.querySelector(
 const spendModalTitle = modalInputGroup.querySelector('h3')
 const spendDate = modalInputGroup.querySelector('.spend-date span')
 const calendarIcon = modalInputGroup.querySelector('.spend-date button')
-const spendExpense = modalInputGroup.querySelector('.spend-expense')
+const spendMoney = modalInputGroup.querySelector('.spend-expense')
 const spendCatagory = modalInputGroup.querySelector('.spend-catagory')
 const spendTitle = modalInputGroup.querySelector('.spend-title')
 const spendMemo = modalInputGroup.querySelector('.spend-memo')
@@ -53,7 +54,7 @@ const spendDeleteButton = document.querySelector('.spend-list-delete-button')
 const spendSaveButton = document.querySelector('.spend-modal-save-button')
 const modalCloseButton = document.querySelector('.spend-modal-close-button')
 const budgetSaveButton = document.querySelector(
-  '.spend-modal-save-button.add-budget'
+  '.spend-modal-save-button.add-income'
 )
 
 // CALENDAR
