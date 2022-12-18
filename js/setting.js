@@ -57,8 +57,8 @@ function saveSettingValues(e) {
 }
 startButton.addEventListener('click', saveSettingValues)
 
+// 새로고침 시, 설정된 예산 데이터가 없다면 인트로페이지 다시 열기
 if (localStorage.getItem('budget') !== null) {
-  // startButton.addEventListener('click', saveSettingValues)
   introPage.classList.add('visually-hidden')
   generateSpendSummary()
 }
